@@ -5,12 +5,12 @@ ActiveAdmin.register Batch do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :code, :start_year, :end_year
+  permit_params :name, :start_year, :end_year
   #
   # or
   #
   # permit_params do
-  #   permitted = [:code, :start_year, :end_year]
+  #   permitted = [:name, :start_year, :end_year]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end

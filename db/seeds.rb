@@ -5,4 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+Role.create!(name: 'Faculty', code: 'FAC')
+Role.create!(name: 'Student', code: 'STU')
+Role.create!(name: 'Head Of Department', code: 'HOD')
+
+Department.create!(name: 'Computer Science & Engineering', code: 'CSE')
+Department.create!(name: 'Civil Engineering', code: 'CIVIL')
+Department.create!(name: 'Electrical & Communication Engineering', code: 'ECE')
+Department.create!(name: 'Electrical & Electronics Engineering', code: 'EEE')
+Department.create!(name: 'Mechanical Engineering', code: 'MECH')
+
+Course.create!(name: 'Batcher Of Technology', code: 'BTECH')
+Course.create!(name: 'Master Of Technology', code: 'MTECH')
+
+Regulation.create!(name: 'Regulation 19', code: 'R19')
+Regulation.create!(name: 'Regulation 20', code: 'R20')
