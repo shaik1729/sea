@@ -39,6 +39,7 @@ ActiveAdmin.register User do
       column :role
       column :mobile
       column :department
+      column :rollno
       actions
     end
 
