@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_02_031156) do
+ActiveRecord::Schema.define(version: 2022_10_02_031310) do
+
+  create_table "batches", force: :cascade do |t|
+    t.string "code"
+    t.date "start_year"
+    t.date "end_year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "name"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :batches
   resources :regulations
   resources :courses
   resources :departments

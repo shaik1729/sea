@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  start_year: 2022-10-02
+  end_year: 2022-10-02
+
+two:
+  code: MyString
+  start_year: 2022-10-02
+  end_year: 2022-10-02
