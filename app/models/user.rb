@@ -12,6 +12,7 @@ class User < ApplicationRecord
   belongs_to :batch, optional: true
   has_many :documents
   has_many :articles
+  has_many :notifications
 
   def is_student?
     role.code == 'STU'
