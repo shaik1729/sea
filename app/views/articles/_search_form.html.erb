@@ -1,0 +1,8 @@
+<%= form_with url: search_articles_path, local: true, method: :get do  |f| %>
+    <%= text_field_tag :id, params[:id], :placeholder => "Enter Article ID", class: "form-control me-2" %>
+    <p>OR</p>
+    <%= text_field_tag :title, params[:title], :placeholder => "Enter Article Title", class: "form-control me-2" %>
+    <div class="actions">
+        <%= f.submit "Search" %>
+    </div>
+<% end %>

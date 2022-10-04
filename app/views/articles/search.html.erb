@@ -1,0 +1,26 @@
+<%= render 'search_form' %>
+
+<h1>Search Article</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Keywords</th>
+      <th>Author</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td>a<%= article.id %></td>
+        <td><%= link_to article.title, article %></td>
+        <td><%= article.keywords %></td>
+        <td><%= "#{article.user.name} (#{article.user.role.name} #{article.user.department.code})" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

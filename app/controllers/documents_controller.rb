@@ -13,7 +13,6 @@ class DocumentsController < ApplicationController
     else
       @review_docs = []    
       @approved_documents = []
-
     end
   end
 

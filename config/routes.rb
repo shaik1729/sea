@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :articles do
+    member do
+      put :approve
+      put :reject
+    end
+    collection do
+      get :search
+    end
+  end
+
   resources :documents do
     member do
       put :approve
@@ -8,6 +18,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  
   get 'home/index'
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config

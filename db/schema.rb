@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_02_091454) do
+ActiveRecord::Schema.define(version: 2022_10_04_054439) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -88,6 +88,18 @@ ActiveRecord::Schema.define(version: 2022_10_02_091454) do
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_admin_users_on_unlock_token", unique: true
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.string "keywords"
+    t.string "approval_status"
+    t.integer "reviewer1_id"
+    t.integer "reviewer2_id"
+    t.integer "reviewer3_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "batches", force: :cascade do |t|
