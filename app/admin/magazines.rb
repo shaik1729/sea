@@ -15,4 +15,8 @@ ActiveAdmin.register Magazine do
   #   permitted
   # end
   
+  after_create do |magazine|
+    MagazineMailer.with(title: magazine.title, url: magazine.url).new_magazine.deliver_later
+  end
+
 end
