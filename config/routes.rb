@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :magazines
   resources :articles do
     member do
       put :approve

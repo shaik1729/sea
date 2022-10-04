@@ -9,10 +9,9 @@
         <% if user_signed_in? %>
             <li class="nav-item"><p class="nav-link m-0"><%= link_to "Documents", documents_path %></p></li>
             <li class="nav-item"><p class="nav-link m-0"><%= link_to "Articles", articles_path %></p></li>
-            <li class="nav-item"><p class="nav-link m-0">Blogs</p></li>
             <li class="nav-item"><p class="nav-link m-0">Classes</p></li>
             <li class="nav-item"><p class="nav-link m-0">Results</p></li>
-            <li class="nav-item"><p class="nav-link m-0">Magazines</p></li>
+            <li class="nav-item"><p class="nav-link m-0"><%= link_to "Magazine", magazines_path %></p></li>
             <li class="nav-item"><p class="nav-link m-0">Notifications</p></li>
 
             <li class="nav-item">

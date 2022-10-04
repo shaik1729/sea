@@ -1,0 +1,9 @@
+<h1>Magazines</h1>
+<div class="container">
+  <% @magazines.each do |magazine| %>
+    <div class="row">
+      <p><%= magazine.title %></p>
+      <td><%= link_to 'Show', magazine %></td>
+    </div>
+  <% end %>
+</div>
