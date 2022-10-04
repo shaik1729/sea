@@ -5,12 +5,12 @@ ActiveAdmin.register Document do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :keywords, :content, :approved_status, :reviewer1_id, :reviewer2_id, :reviewer3_id, :user_id
+  permit_params :title, :keywords, :content, :approval_status, :reviewer1_id, :reviewer2_id, :reviewer3_id, :user_id
   #
   # or
   #
   # permit_params do
-  #   permitted = [:title, :keywords, :approved_status, :reviewer1_id, :reviewer2_id, :reviewer3_id]
+  #   permitted = [:title, :keywords, :approval_status, :reviewer1_id, :reviewer2_id, :reviewer3_id]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
@@ -29,7 +29,7 @@ ActiveAdmin.register Document do
       selectable_column
       column :title
       column :keywords
-      column :approved_status
+      column :approval_status
       column :user
       actions
     end

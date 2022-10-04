@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2022_10_02_091454) do
   create_table "documents", force: :cascade do |t|
     t.string "title"
     t.string "keywords"
-    t.string "approved_status"
+    t.string "approval_status"
     t.integer "reviewer1_id"
     t.integer "reviewer2_id"
     t.integer "reviewer3_id"

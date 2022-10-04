@@ -14,7 +14,7 @@ class DocumentsTest < ApplicationSystemTestCase
     visit documents_url
     click_on "New Document"
 
-    fill_in "Approved status", with: @document.approved_status
+    fill_in "Approval status", with: @document.approval_status
     fill_in "Keywords", with: @document.keywords
     fill_in "Reviewer1", with: @document.reviewer1_id
     fill_in "Reviewer2", with: @document.reviewer2_id
@@ -30,7 +30,7 @@ class DocumentsTest < ApplicationSystemTestCase
     visit documents_url
     click_on "Edit", match: :first
 
-    fill_in "Approved status", with: @document.approved_status
+    fill_in "Approval status", with: @document.approval_status
     fill_in "Keywords", with: @document.keywords
     fill_in "Reviewer1", with: @document.reviewer1_id
     fill_in "Reviewer2", with: @document.reviewer2_id

@@ -21,7 +21,7 @@
         <td><%= document.title %></td>
         <td><%= document.keywords %></td>
         <% if current_user.is_student? %>
-          <td><%= document.approved_status %></td>
+          <td><%= document.approval_status %></td>
         <% else %>
           <td><%= link_to 'Edit', edit_document_path(document) %></td>
           <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -59,7 +59,7 @@
           <td><%= document.title %></td>
           <td><%= document.keywords %></td>
           <td><%= document.user.name %></td>
-          <td><%= document.approved_status %></td>
+          <td><%= document.approval_status %></td>
           <td><%= document.reviewer1&.name %></td>
           <td><%= document.reviewer2&.name  %></td>
           <td><%= document.reviewer3&.name %></td>
@@ -94,7 +94,7 @@
           <td><%= document.title %></td>
           <td><%= document.keywords %></td>
           <td><%= document.user.name %></td>
-          <td><%= document.approved_status %></td>
+          <td><%= document.approval_status %></td>
           <td><%= document.reviewer1&.name %></td>
           <td><%= document.reviewer2&.name  %></td>
           <td><%= document.reviewer3&.name %></td>

@@ -17,7 +17,7 @@ class DocumentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create document" do
     assert_difference('Document.count') do
-      post documents_url, params: { document: { approved_status: @document.approved_status, keywords: @document.keywords, reviewer1_id: @document.reviewer1_id, reviewer2_id: @document.reviewer2_id, reviewer3_id: @document.reviewer3_id, title: @document.title } }
+      post documents_url, params: { document: { approval_status: @document.approval_status, keywords: @document.keywords, reviewer1_id: @document.reviewer1_id, reviewer2_id: @document.reviewer2_id, reviewer3_id: @document.reviewer3_id, title: @document.title } }
     end
 
     assert_redirected_to document_url(Document.last)
@@ -34,7 +34,7 @@ class DocumentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update document" do
-    patch document_url(@document), params: { document: { approved_status: @document.approved_status, keywords: @document.keywords, reviewer1_id: @document.reviewer1_id, reviewer2_id: @document.reviewer2_id, reviewer3_id: @document.reviewer3_id, title: @document.title } }
+    patch document_url(@document), params: { document: { approval_status: @document.approval_status, keywords: @document.keywords, reviewer1_id: @document.reviewer1_id, reviewer2_id: @document.reviewer2_id, reviewer3_id: @document.reviewer3_id, title: @document.title } }
     assert_redirected_to document_url(@document)
   end
 
