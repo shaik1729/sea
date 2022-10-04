@@ -22,3 +22,6 @@ Course.create!(name: 'Master Of Technology', code: 'MTECH')
 
 Regulation.create!(name: 'Regulation 19', code: 'R19')
 Regulation.create!(name: 'Regulation 20', code: 'R20')
+
+Batch.create!(name: '2019-2023')
+Batch.create!(name: '2020-2024')

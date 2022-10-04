@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @document.title %>
+</p>
+
+<p>
+  <strong>Keywords:</strong>
+  <%= @document.keywords %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= "#{@document.user.name} (#{@document.user.role.name}, #{@document.user.department.name})" %>
+</p>
+
+
+<p>
+  <%= @document.content %>
+</p>
+
+<% if current_user.is_student? %>
+  <p>
+    <strong>Approved status:</strong>
+    <%= @document.approved_status %>
+  </p>
+
+  <p>
+    <strong>Reviewer1:</strong>
+    <%= @document.reviewer1&.name %>
+  </p>
+
+  <p>
+    <strong>Reviewer2:</strong>
+    <%= @document.reviewer2&.name %>
+  </p>
+
+  <p>
+    <strong>Reviewer3:</strong>
+    <%= @document.reviewer3&.name %>
+  </p>
+<% end %>
+
+
+<% if show_approve_button? %>
+  <%= form_with url: approve_document_path, local: true, method: :put do  |f| %>
+    <div class="actions">
+      <%= f.submit "Approve" %>
+    </div>
+  <% end %>
+
+  <%= form_with url: reject_document_path, local: true, method: :put do  |f| %>
+    <%= text_field_tag :reason, params[:reason], :placeholder => "Enter Reason", class: "form-control me-2",:required => 'required' %>
+    <div class="actions">
+      <%= f.submit "Reject" %>
+    </div>
+  <% end %>
+<% end %>

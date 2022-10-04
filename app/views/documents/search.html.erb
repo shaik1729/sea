@@ -1,0 +1,26 @@
+<%= render 'search_form' %>
+
+<h1>Search Documents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Keywords</th>
+      <th>Author</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @documents.each do |document| %>
+      <tr>
+        <td>d<%= document.id %></td>
+        <td><%= link_to document.title, document %></td>
+        <td><%= document.keywords %></td>
+        <td><%= "#{document.user.name} (#{document.user.role.name} #{document.user.department.code})" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

@@ -332,4 +332,7 @@ ActiveAdmin.setup do |config|
   # You can switch to using Webpacker here.
   #
   # config.use_webpacker = true
+
+  config.register_stylesheet 'https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css'
+  config.register_javascript 'https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js'
 end

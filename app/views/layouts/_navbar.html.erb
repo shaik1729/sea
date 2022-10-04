@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
         <% if user_signed_in? %>
-            <li class="nav-item"><p class="nav-link m-0">Docuemnts</p></li>
+            <li class="nav-item"><p class="nav-link m-0"><%= link_to "Documents", documents_path %></p></li>
             <li class="nav-item"><p class="nav-link m-0">Articles</p></li>
             <li class="nav-item"><p class="nav-link m-0">Blogs</p></li>
             <li class="nav-item"><p class="nav-link m-0">Classes</p></li>
@@ -22,7 +22,7 @@
                 <p class="nav-link m-0"><%= current_user.email %></p>
             </li>
             <li class="nav-item">
-                <p class="nav-link m-0"><%= current_user.role_id %></p>
+                <p class="nav-link m-0"><%= current_user.role.code %></p>
             </li>
         <% else %>
             <li class="nav-item">

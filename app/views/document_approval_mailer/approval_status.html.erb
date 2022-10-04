@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Your Document title : <%= @document.title %> has been <%= @status %></h1>
+    <% if @status == Document::APPROVED %>
+      <p>
+        <strong>Public Document URL link : </strong>
+        <%= link_to @document.title, document_url(@document) %>
+      </p>
+      <p>
+        <strong>Reviewer1:</strong>
+        <%= @document.reviewer1&.name %>
+      </p>
+
+      <p>
+        <strong>Reviewer2:</strong>
+        <%= @document.reviewer2&.name %>
+      </p>
+
+      <p>
+        <strong>Reviewer3:</strong>
+        <%= @user.name %>
+      </p>
+    <% else %>
+      <p>
+        <strong>Rejected By</strong>
+        <%= "#{@user.name} (#{@user.role.name} #{@user.department.code})" %>
+      </p>
+        <p>
+        <strong>Message</strong>
+        <%= @message %>
+      </p>
+    <% end %>
+    <p>Have a great day!</p>
+  </body>
+</html>
