@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'New Tutorial', new_tutorial_path %>
+<br>
+<%= link_to 'Videos', videos_path %>
+<h1>Your Tutorials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @your_tutorials.each do |tutorial| %>
+      <tr>
+        <td><%= tutorial.title %></td>
+        <td><%= link_to 'Show', tutorial %></td>
+        <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
+        <td><%= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>Tutorials</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tutorials.each do |tutorial| %>
+      <tr>
+        <td><%= tutorial.title %></td>
+        <td><%= link_to 'Show', tutorial %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

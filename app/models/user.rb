@@ -13,8 +13,19 @@ class User < ApplicationRecord
   has_many :documents
   has_many :articles
   has_many :notifications
+  has_many :tutorials
+  has_many :videos
+
 
   def is_student?
     role.code == 'STU'
+  end
+
+  def is_hod?
+    role.code == 'HOD'
+  end
+
+  def is_faculty?
+    role.code == 'FAC'
   end
 end

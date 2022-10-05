@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :videos
+  resources :tutorials
   resources :notifications
   resources :magazines
   resources :articles do
