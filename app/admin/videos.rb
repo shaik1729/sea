@@ -22,6 +22,7 @@ ActiveAdmin.register Video do
         f.input :clip, as: :file
         f.input :thumbnail, as: :file
         f.input :tutorial
+        f.input :user
       end
       f.actions
     end

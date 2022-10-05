@@ -14,5 +14,13 @@ ActiveAdmin.register Tutorial do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+    form do |f|
+      f.inputs "Tutorial" do
+        f.input :title 
+        f.input :user
+      end
+      f.actions
+    end  
   
 end
