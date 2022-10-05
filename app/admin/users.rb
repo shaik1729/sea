@@ -15,6 +15,19 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
+  action_item :only => :index do
+    link_to 'Create Users via Upload CSV', :action => 'create_users'
+  end
+
+  collection_action :create_users do
+    render "admin/csv/create_users"
+  end
+
+  collection_action :import_csv, :method => :post do
+    CreateUsersViaCsv.convert_save("user", params[:dump][:file])
+    redirect_to :action => :index, :notice => "Users Created successfully!"
+  end
+
   form do |f|
       f.inputs "User" do
         f.input :email
