@@ -1,0 +1,66 @@
+<%= link_to 'Add Results', new_result_path %>
+
+<div class="card mt-3">
+  <div class="card-header">
+    Results
+  </div>
+  <div class="card-body">
+    <%= render "search_form" %>
+
+    <% if !@results.empty? %>
+      <div class="card w-50 mt-4 mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-4">
+              <img src="https://i.pinimg.com/originals/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg" class="w-100">
+            </div>  
+            <div class="col">
+              <h5 class="card-title">Roll Number: <%= @user.rollno %></h5>
+              <p class="card-text">Name: <%= @user.name %></p>
+              <p class="card-text">Batch: <%= @user.batch.name %></p>
+              <p class="card-text">Regulation: <%= @user.regulation.name %></p>
+              <p class="card-text">Total Credits: <%= @total_credits %></p>
+            </div>  
+          </div>
+        </div>
+      </div>
+      
+      <table class="table table-bordered table-sm table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Subject title</th>
+            <th scope="col">Internal marks</th>
+            <th scope="col">External marks</th>
+            <th scope="col">Total marks</th>
+            <th scope="col">Result</th>
+            <th scope="col">Credits</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Result Type</th>
+            <th scope="col">Semester</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @results.each do |result| %>
+            <tr>
+              <td><%= result.subject_title %></td>
+              <td><%= result.internal_marks %></td>
+              <td><%= result.external_marks %></td>
+              <td><%= result.total_marks %></td>
+              <td><%= result.result %></td>
+              <td><%= result.credits %></td>
+              <td><%= result.grade %></td>
+              <td><%= result.result_type %></td>
+              <td><%= result.semester.name %></td>
+              
+              <% if current_user.is_hod? %>
+                <td><%= link_to 'UPDATE', edit_result_path(result), class: "btn btn-info btn-sm" %></td>
+                <td><%= link_to 'DELETE', result, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

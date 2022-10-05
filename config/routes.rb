@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  resources :results do
+    collection {post :import }
+  end
+
   resources :videos
   resources :tutorials
   resources :notifications
   resources :magazines
+  
   resources :articles do
     member do
       put :approve

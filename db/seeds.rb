@@ -25,3 +25,12 @@ Regulation.create!(name: 'Regulation 20', code: 'R20')
 
 Batch.create!(name: '2019-2023')
 Batch.create!(name: '2020-2024')
+
+Semester.create!(name: 'I')
+Semester.create!(name: 'II')
+Semester.create!(name: 'III')
+Semester.create!(name: 'IV')
+Semester.create!(name: 'V')
+Semester.create!(name: 'VI')
+Semester.create!(name: 'VII')
+Semester.create!(name: 'VIII')

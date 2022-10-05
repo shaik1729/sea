@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_05_090705) do
+ActiveRecord::Schema.define(version: 2022_10_05_142049) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -161,9 +161,31 @@ ActiveRecord::Schema.define(version: 2022_10_05_090705) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "results", force: :cascade do |t|
+    t.string "subject_title"
+    t.string "internal_marks"
+    t.string "external_marks"
+    t.string "total_marks"
+    t.string "result"
+    t.string "credits"
+    t.string "grade"
+    t.string "result_type"
+    t.string "user_id"
+    t.string "semester_id"
+    t.string "last_updated_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "semesters", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
