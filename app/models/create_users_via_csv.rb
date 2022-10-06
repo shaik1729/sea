@@ -11,10 +11,10 @@ class CreateUsersViaCsv
         name = fields["Name"].upcase!
         mobile = fields["Mobile Number"]
         rollno = fields["Roll Number"].upcase!
-        department_id = Department.find_by(code: fields["Department"]).id
-        course_id = Course.find_by(code: fields["Course"]).id
+        department_id = Department.find_by(code: fields["Department"].upcase!).id
+        course_id = Course.find_by(code: fields["Course"].upcase!).id
         if fields["Regulation"]
-          regulation_id = Regulation.find_by(code: fields["Regulation"]).id
+          regulation_id = Regulation.find_by(code: fields["Regulation"].upcase!).id
           role_id = Role.find_by(code: "STU").id
         else
           role_id = Role.find_by(code: "FAC").id

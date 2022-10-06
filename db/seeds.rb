@@ -7,15 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
-Role.create!(name: 'Faculty', code: 'FAC')
 Role.create!(name: 'Student', code: 'STU')
+Role.create!(name: 'Faculty', code: 'FAC')
 Role.create!(name: 'Head Of Department', code: 'HOD')
 
-Department.create!(name: 'Computer Science & Engineering', code: 'CSE')
 Department.create!(name: 'Civil Engineering', code: 'CIVIL')
-Department.create!(name: 'Electrical & Communication Engineering', code: 'ECE')
 Department.create!(name: 'Electrical & Electronics Engineering', code: 'EEE')
 Department.create!(name: 'Mechanical Engineering', code: 'MECH')
+Department.create!(name: 'Electrical & Communication Engineering', code: 'ECE')
+Department.create!(name: 'Computer Science & Engineering', code: 'CSE')
 
 Course.create!(name: 'Batcher Of Technology', code: 'BTECH')
 Course.create!(name: 'Master Of Technology', code: 'MTECH')
