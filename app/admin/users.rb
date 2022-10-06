@@ -5,7 +5,7 @@ ActiveAdmin.register User do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :name, :mobile, :rollno, :role_id, :department_id, :course_id, :regulation_id, :batch_id, :password, :password_confirmation
+  permit_params :email, :name, :mobile, :rollno, :role_id, :department_id, :course_id, :regulation_id, :batch_id, :password, :password_confirmation, :avatar_url
   #
   # or
   #
@@ -41,6 +41,7 @@ ActiveAdmin.register User do
         f.input :course
         f.input :regulation
         f.input :batch
+        f.input :avatar_url
       end
       f.actions
     end
