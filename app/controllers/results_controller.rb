@@ -74,7 +74,7 @@ class ResultsController < ApplicationController
   end
 
   def import
-    Result.import(params[:file])
+    Result.import(params[:file], params[:current_user_id] = current_user.id)
     redirect_to results_path, notice: "Results Uploaded Successfully"
   end
 

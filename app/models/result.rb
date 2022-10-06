@@ -10,13 +10,12 @@ class Result < ApplicationRecord
         self.result.upcase!
     end
 
-    def self.import(file)
+    def self.import(file, current_user_id)
         records = CSV.parse(File.read(file), headers: true)
         records.each do |student_record|
             arr_of_stu_record = student_record.to_a
             puts "Uploading result of : #{arr_of_stu_record[0]}"
-
-            (5..arr_of_stu_record.length-1).step(6).each do |index| 
+            (3..arr_of_stu_record.length-1).step(6).each do |index| 
                 Result.create!(
                 subject_title: arr_of_stu_record[index].first.upcase,
                 internal_marks: arr_of_stu_record[index+1].last,
@@ -27,8 +26,8 @@ class Result < ApplicationRecord
                 grade: arr_of_stu_record[index+5].last,
                 result_type: "REGULAR",
                 user_id: User.find_by(rollno: arr_of_stu_record[0].last.upcase).id,
-                semester_id: Semester.find_by(name: arr_of_stu_record[4].last.upcase).id,
-                last_updated_user_id: current_user.id
+                semester_id: Semester.find_by(id: arr_of_stu_record[2].last.upcase).id,
+                last_updated_user_id: current_user_id
                 )
             end
             puts "#{arr_of_stu_record[0]} -> #{arr_of_stu_record[1]} result Uploaded successfully."
