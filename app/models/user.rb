@@ -10,7 +10,6 @@ class User < ApplicationRecord
   belongs_to :course, optional: true
   belongs_to :regulation, optional: true
   belongs_to :batch, optional: true
-  belongs_to :mobile, optional: true
 
   has_many :documents
   has_many :articles
