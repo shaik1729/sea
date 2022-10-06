@@ -9,7 +9,7 @@ class CreateUsersViaCsv
 
         email = fields["Email Address"]
         name = fields["Name"].upcase!
-        mobile = fields["Mobile"]
+        mobile = fields["Mobile Number"]
         rollno = fields["Roll Number"].upcase!
         department_id = Department.find_by(code: fields["Department"]).id
         course_id = Course.find_by(code: fields["Course"]).id
