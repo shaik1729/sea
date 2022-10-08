@@ -123,7 +123,7 @@ class DocumentsController < ApplicationController
     if params[:id].empty?
       @documents = Document.where("approval_status = ? and title like ?", Document::APPROVED, "%#{params[:title]}%").order("id DESC")
     else
-      @documents = Document.where("approval_status = ? and id = ?", Document::APPROVED, params[:id][1..]).order("id DESC")
+      @documents = Document.where("approval_status = ? and id = ?", Document::APPROVED, params[:id][1..].upcase!).order("id DESC")
     end
 
     if @documents.empty?
