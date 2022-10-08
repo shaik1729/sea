@@ -140,19 +140,19 @@ class DocumentsController < ApplicationController
 
     def authrize_access
       if current_user.is_student?
-        raise 'Unauthorized' unless (['index', 'new', 'create', 'show', 'search'].include?(params[:action]))
+        raise Unauthorized unless (['index', 'new', 'create', 'show', 'search'].include?(params[:action]))
         if @document.present?
-          raise 'Unauthorized' if ((@document.user != current_user) && (@document.approval_status != Document::APPROVED))
+          raise Unauthorized if ((@document.user != current_user) && (@document.approval_status != Document::APPROVED))
         end 
       else
         if ['edit', 'update', 'destroy'].include?(params[:action])
-          raise 'Unauthorized' unless @document.user == current_user
+          raise Unauthorized unless @document.user == current_user
         elsif ['approve', 'reject'].include?(params[:action])
-          raise 'Unauthorized' unless @document.user.is_student?
+          raise Unauthorized unless @document.user.is_student?
           if params[:action] == 'approve'
-            raise 'Unauthorized' if (@document.approval_status == Document::APPROVED)
+            raise Unauthorized if (@document.approval_status == Document::APPROVED)
           elsif params[:action] == 'reject'
-            raise 'Unauthorized' if (@document.approval_status == Document::REJECTED)
+            raise Unauthorized if (@document.approval_status == Document::REJECTED)
           end
         end
       end

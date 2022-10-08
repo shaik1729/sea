@@ -87,7 +87,7 @@ class ResultsController < ApplicationController
 
     def authrize_access
       if current_user.is_student? || current_user.is_faculty?
-        raise 'Unauthorized' unless (['index', 'show'].include?(params[:action]))
+        raise Unauthorized unless (['index', 'show'].include?(params[:action]))
       end
     end
 
