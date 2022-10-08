@@ -33,8 +33,10 @@ class Result < ApplicationRecord
                 end
                 puts "#{arr_of_stu_record[0]} -> #{arr_of_stu_record[1]} result Uploaded successfully."
             end
+            1
         rescue => exception
             puts "\n\n\n*********************#{exception} occured in result creation*********************\n\n\n"
+            0
         end
     end
 end

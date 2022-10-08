@@ -74,8 +74,12 @@ class ResultsController < ApplicationController
   end
 
   def import
-    Result.import(params[:file], params[:current_user_id] = current_user.id)
-    redirect_to results_path, notice: "Results Uploaded Successfully"
+    result = Result.import(params[:file], params[:current_user_id] = current_user.id)
+    if result == 1
+      redirect_to results_path, notice: "Results uploaded successfully"
+    else
+      redirect_to results_path, notice: "Error occured while uploading results"
+    end
   end
 
 

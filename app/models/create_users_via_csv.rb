@@ -30,8 +30,10 @@ class CreateUsersViaCsv
 
           WelcomeMailer.with(name: name, email: email, password: password).welcome_user.deliver_later
         end
+        1
       rescue => exception
         puts "\n\n\n*********************#{exception} occured in users creation*********************\n\n\n"
+        0
       end
     end
   end

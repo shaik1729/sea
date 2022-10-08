@@ -24,8 +24,12 @@ ActiveAdmin.register User do
   end
 
   collection_action :import_csv, :method => :post do
-    CreateUsersViaCsv.convert_save("user", params[:dump][:file])
-    redirect_to :action => :index, :notice => "Users Created successfully!"
+    result = CreateUsersViaCsv.convert_save("user", params[:dump][:file])
+    if result
+      redirect_to :action => :index, :notice => "Users created successfully"
+    else
+      redirect_to :action => :index, :notice => "Users creation failed"
+    end
   end
 
   form do |f|
