@@ -331,8 +331,7 @@ ActiveAdmin.setup do |config|
   # By default, Active Admin uses Sprocket's asset pipeline.
   # You can switch to using Webpacker here.
   #
-  # config.use_webpacker = true
-
-  config.register_stylesheet 'https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css'
-  config.register_javascript 'https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js'
+  # config.register_stylesheet 'https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css'
+  # config.register_javascript 'https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js'
+  config.use_webpacker = true
 end
