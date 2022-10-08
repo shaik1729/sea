@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :magazines
   
   resources :articles do
+    resources :comments, only: [:create, :new]
     member do
       put :approve
       put :reject
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :documents do
-    resources :comments
+    resources :comments, only: [:create, :new]
     member do
       put :approve
       put :reject

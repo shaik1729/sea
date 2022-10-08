@@ -20,7 +20,7 @@
   <%= @article.content %>
 </p>
 
-<% if current_user.is_student? %>
+<% if show_article_approval_status? %>
   <p>
     <strong>Approval status:</strong>
     <%= @article.approval_status %>
@@ -56,4 +56,17 @@
       <%= f.submit "Reject" %>
     </div>
   <% end %>
+<% end %>
+
+
+<%= form_for [@article, Comment.new], method: :post do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.text_area :content, placeholder: "Add a comment..." %><br/>
+    <%= f.submit "Submit"  %>
+<% end %>
+
+<% if show_article_comments? %>
+  <strong>Comments:</strong>
+
+  <%= render partial: 'comments/comment', collection: @article.comments.order(id: :desc) %>
 <% end %>

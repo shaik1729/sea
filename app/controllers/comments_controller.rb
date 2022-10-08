@@ -23,6 +23,8 @@ class CommentsController < ApplicationController
         @commentable = Comment.find_by_id(params[:comment_id])
       elsif params[:document_id]
         @commentable = Document.find_by_id(params[:document_id])
+      elsif params[:article_id]
+        @commentable = Article.find_by_id(params[:article_id])
       end
     end
 

@@ -8,6 +8,6 @@ module DocumentsHelper
     end
 
     def show_document_approval_status?
-        @document.user == current_user && current_user.role.code == "STU"
+        @document.user == current_user && current_user.is_student?
     end
 end
