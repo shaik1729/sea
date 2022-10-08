@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_06_061302) do
+ActiveRecord::Schema.define(version: 2022_10_08_104956) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -108,6 +108,15 @@ ActiveRecord::Schema.define(version: 2022_10_06_061302) do
     t.date "end_year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "courses", force: :cascade do |t|

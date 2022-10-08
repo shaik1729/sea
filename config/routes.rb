@@ -18,7 +18,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :comments do
+    resources :comments
+  end
+
   resources :documents do
+    resources :comments
     member do
       put :approve
       put :reject

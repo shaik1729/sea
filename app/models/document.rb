@@ -2,6 +2,7 @@ class Document < ApplicationRecord
     has_rich_text :content
     belongs_to :user
     before_save :upcase_fields
+    has_many :comments, as: :commentable    
     
     APPROVED = 'Approved'
     IN_REVIEW = 'In Review'

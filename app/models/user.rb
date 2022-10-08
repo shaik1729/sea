@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :tutorials
   has_many :videos
   has_many :results
+  has_many :comments
 
   validates :rollno, uniqueness: true
   validates :email, uniqueness: true
