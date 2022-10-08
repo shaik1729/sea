@@ -12,4 +12,10 @@ class Notification < ApplicationRecord
     validates :batch_id, presence: true
     validates :department_id, presence: true
     validates :course_id, presence: true
+
+    before_save :upcase_fields
+
+    def upcase_fields
+        self.title.upcase!
+    end
 end
