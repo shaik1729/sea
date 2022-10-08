@@ -2,7 +2,8 @@
 
 <%= render 'search_form' %>
 
-<h1>your Article</h1>
+<button class="collapsible">Your Articles</button>
+<div class="content">
 
 <table>
   <thead>
@@ -32,10 +33,13 @@
   </tbody>
 
 </table>
+</div>
 
+
+  
 <% if !current_user.is_student? %>
-
-  <h1>Awaiting Review Articles</h1>
+<button class="collapsible">Awaiting Review Articles</button>
+<div class="content">
 
   <table>
     <thead>
@@ -55,7 +59,7 @@
     <tbody>
       <% @review_arts.each do |article| %>
         <tr>
-          <td>d<%= article.id %></td>
+          <td>a<%= article.id %></td>
           <td><%= article.title %></td>
           <td><%= article.keywords %></td>
           <td><%= article.user.name %></td>
@@ -69,8 +73,9 @@
     </tbody>
 
   </table>
-
-  <h1>Reviewed Articles</h1>
+</div>
+<button class="collapsible">Reviewed Articles</button>
+<div class="content">
 
   <table>
     <thead>
@@ -103,4 +108,6 @@
     </tbody>
 
   </table>
+
+  </div>
 <% end %>

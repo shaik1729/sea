@@ -4,7 +4,8 @@
 
   <%= link_to 'New Notification', new_notification_path %>
 
-  <h1>Your Notifications</h1>
+  <button class="collapsible">Your Notifications</button>
+<div class="content">
 
   <table>
     <thead>
@@ -36,11 +37,9 @@
     </tbody>
   </table>
 
-  <br>
+</div>
+<br>
 <% end %>
-
-
-<h1>Notifications</h1>
 
 <table>
   <thead>
@@ -55,10 +54,7 @@
       <tr>
         <td><%= notification.title %></td>
         <td><%= link_to 'Show', notification %></td>
-        <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
-        <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
