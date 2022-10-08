@@ -1,0 +1,72 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Keywords:</strong>
+  <%= @article.keywords %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= "#{@article.user.name} (#{@article.user.role.name}, #{@article.user.department.name})" %>
+</p>
+
+
+<p>
+  <%= @article.content %>
+</p>
+
+<% if show_article_approval_status? %>
+  <p>
+    <strong>Approval status:</strong>
+    <%= @article.approval_status %>
+  </p>
+
+  <p>
+    <strong>Reviewer1:</strong>
+    <%= @article.reviewer1&.name %>
+  </p>
+
+  <p>
+    <strong>Reviewer2:</strong>
+    <%= @article.reviewer2&.name %>
+  </p>
+
+  <p>
+    <strong>Reviewer3:</strong>
+    <%= @article.reviewer3&.name %>
+  </p>
+<% end %>
+
+
+<% if show_article_approve_button? %>
+  <%= form_with url: approve_article_path, local: true, method: :put do  |f| %>
+    <div class="actions">
+      <%= f.submit "Approve" %>
+    </div>
+  <% end %>
+
+  <%= form_with url: reject_article_path, local: true, method: :put do  |f| %>
+    <%= text_field_tag :reason, params[:reason], :placeholder => "Enter Reason", class: "form-control me-2",:required => 'required' %>
+    <div class="actions">
+      <%= f.submit "Reject" %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<%= form_for [@article, Comment.new], method: :post do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.text_area :content, placeholder: "Add a comment..." %><br/>
+    <%= f.submit "Submit"  %>
+<% end %>
+
+<% if show_article_comments? %>
+  <strong>Comments:</strong>
+
+  <%= render partial: 'comments/comment', collection: @article.comments.order(id: :desc) %>
+<% end %>

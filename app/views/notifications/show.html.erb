@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @notification.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= "#{@notification.user&.name} (#{@notification.user&.role&.name}, #{@notification.user&.department&.name})" %>
+</p>
+
+<p>
+  <strong>Notification:</strong>
+  <%= @notification.content %>
+</p>
+
+<p>
+  <strong>Regulation:</strong>
+  <%= @notification.regulation&.name %>
+</p>
+
+<p>
+  <strong>Batch:</strong>
+  <%= @notification.batch&.name %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @notification.department&.name %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @notification.course&.name %>
+</p>
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>

@@ -1,0 +1,52 @@
+<%= form_with(model: notification) do |form| %>
+  <% if notification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(notification.errors.count, "error") %> prohibited this notification from being saved:</h2>
+
+      <ul>
+        <% notification.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.rich_text_area :content %>
+  </div>
+
+  <div class="field d-none">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, :value => current_user.id %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :regulation_id %>
+    <%= form.collection_select :regulation_id, Regulation.all, :id, :name, {}, {class: "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :batch_id %>
+    <%= form.collection_select :batch_id, Batch.all, :id, :name, {}, {class: "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department_id %>
+    <%= form.collection_select :department_id, Department.all, :id, :name, {}, {class: "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_id %>
+    <%= form.collection_select :course_id, Course.all, :id, :name, {}, {class: "form-select"} %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

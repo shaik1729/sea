@@ -1,0 +1,71 @@
+<h1>New Result</h1>
+
+<div class="card mt-4">
+  <div class="card-header">
+    Upload Results
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-4">
+        <P>Note : for bulk upload use the below format of CSV file</p>
+        <ul>
+          <li>rollno</li>
+          <li>name</li>
+          <li>semester_id</li>
+          <li>sub1</li>
+          <li>internal</li>
+          <li>external</li>
+          <li>total_marks</li>
+          <li>credits</li>
+          <li>grade</li>
+          <li>sub2</li>
+          <li>internal</li>
+          <li>external</li>
+          <li>total_marks</li>
+          <li>credits</li>
+          <li>grade</li>
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <li>199F1A0***</li>
+          <li>shaik</li>
+          <li>4</li>
+          <li>PYTHON PROGRAMMING</li>
+          <li>27</li>
+          <li>43</li>
+          <li>70</li>
+          <li>2</li>
+          <li>A</li>
+        </ul>
+      </div>
+      <div class="col">
+
+        <div class="card mt-4">
+          <div class="card-body">
+            <h5 class="card-title">Bulk Upload</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Please Upload a CSV file with the given format.</h6>
+              <%= form_tag import_results_path, multipart: true do %>
+                <%= file_field_tag :file, class: "btn btn-info" %>
+                <%= submit_tag 'Upload Results', class: "btn btn-primary" %>
+              <% end %>
+          </div>
+        </div>
+
+        <div class="card mt-4">
+          <div class="card-body">
+            <h5 class="card-title">New Result(Manual)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">For entering the student results manually.</h6>
+
+            <%= render 'form', result: @result %>
+
+            <%= link_to 'Back', results_path, class: "btn btn-secondary mt-4" %>   
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Back', results_path %>

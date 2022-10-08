@@ -1,0 +1,16 @@
+<li>
+    
+    <%= "#{comment.content} -> #{comment.user.email}" %> -
+    <a href="#" class="comment-form-display">Reply</a>
+    <div class="comment-form">
+        <%= form_for [comment, Comment.new] do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.text_area :content, placeholder: "Add a Reply" %><br/>
+            <%= f.submit "Reply"  %>
+        <% end %>
+    </div>
+    <ul>
+        <%= render partial: 'comments/comment', collection: comment.comments %>
+    </ul>
+
+</li>

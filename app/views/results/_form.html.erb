@@ -1,0 +1,72 @@
+<%= form_with(model: result) do |form| %>
+  <% if result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(result.errors.count, "error") %> prohibited this result from being saved:</h2>
+
+      <ul>
+        <% result.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :subject_title %>
+    <%= form.text_field :subject_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :internal_marks %>
+    <%= form.text_field :internal_marks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :external_marks %>
+    <%= form.text_field :external_marks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_marks %>
+    <%= form.text_field :total_marks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result %>
+    <%= form.select :result, ["pass", "Fail"], {}, {class: "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :credits %>
+    <%= form.text_field :credits %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade %>
+    <%= form.select :grade, ['S', 'A', 'B', 'C', 'D', 'E', 'Y', 'F'], {}, {class: "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result_type %>
+    <%= form.select :result_type, ['Regular', 'Supplementary'], {}, {class: "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.where.not(rollno: [nil, ""]), :id, :rollno, {}, {class: "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semester_id %>
+    <%= form.collection_select :semester_id, Semester.all, :id, :name, {}, {class: "form-select"} %>
+  </div>
+
+  <div class="field d-none">
+    <%= form.label :last_updated_user_id %>
+    <%= form.number_field :last_updated_user_id, :value => current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
