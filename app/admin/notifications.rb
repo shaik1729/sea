@@ -31,4 +31,20 @@ ActiveAdmin.register Notification do
     after_create do |notification|
       NotificationMailer.with(title: notification.title, regulation_id: notification.regulation&.id, user_id: notification.user&.id, batch_id: notification.batch&.id, department_id: notification.department&.id, course_id: notification.course&.id).new_notification.deliver_later
     end
+
+    show do
+      attributes_table do
+        row :title
+        row :user
+        row :regulation
+        row :batch
+        row :department
+        row :course
+        row :content do
+          div resource.content
+        end
+      end
+    end
+
+    
 end

@@ -34,4 +34,16 @@ ActiveAdmin.register Article do
       actions
     end
 
+    show do
+      attributes_table do
+        row :title
+        row :keywords
+        row :approval_status
+        row :content do
+          div resource.content
+        end
+        row :user
+      end
+    end
+
 end

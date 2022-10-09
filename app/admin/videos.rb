@@ -31,6 +31,8 @@ ActiveAdmin.register Video do
   show do
     attributes_table do
       row :title
+      row :tutorial
+      row :user
       row :content do
         div resource.content
       end
