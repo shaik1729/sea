@@ -5,59 +5,61 @@
 
       <ul>
         <% result.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <div class="alert alert-danger" role="alert">
+              <%= error.full_message %>
+          </div>
         <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :subject_title %>
-    <%= form.text_field :subject_title %>
+    <%= form.label :subject_title, class: "form-label" %>
+    <%= form.text_field :subject_title, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :internal_marks %>
-    <%= form.text_field :internal_marks %>
+    <%= form.label :internal_marks, class: "form-label" %>
+    <%= form.text_field :internal_marks, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :external_marks %>
-    <%= form.text_field :external_marks %>
+    <%= form.label :external_marks, class: "form-label" %>
+    <%= form.text_field :external_marks, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :total_marks %>
-    <%= form.text_field :total_marks %>
+    <%= form.label :total_marks, class: "form-label" %>
+    <%= form.text_field :total_marks, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :result %>
+    <%= form.label :result_status, class: "form-label" %>
     <%= form.select :result, ["pass", "Fail"], {}, {class: "form-select"} %>
   </div>
 
   <div class="field">
-    <%= form.label :credits %>
-    <%= form.text_field :credits %>
+    <%= form.label :credits, class: "form-label" %>
+    <%= form.text_field :credits, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :grade %>
+    <%= form.label :grade, class: "form-label" %>
     <%= form.select :grade, ['S', 'A', 'B', 'C', 'D', 'E', 'Y', 'F'], {}, {class: "form-select"} %>
   </div>
 
   <div class="field">
-    <%= form.label :result_type %>
+    <%= form.label :result_type, class: "form-label" %>
     <%= form.select :result_type, ['Regular', 'Supplementary'], {}, {class: "form-select"} %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
+    <%= form.label :user_id, class: "form-label" %>
     <%= form.collection_select :user_id, User.where.not(rollno: [nil, ""]), :id, :rollno, {}, {class: "form-select"} %>
   </div>
 
   <div class="field">
-    <%= form.label :semester_id %>
+    <%= form.label :semester_id, class: "form-label" %>
     <%= form.collection_select :semester_id, Semester.all, :id, :name, {}, {class: "form-select"} %>
   </div>
 
@@ -66,7 +68,7 @@
     <%= form.number_field :last_updated_user_id, :value => current_user.id %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions mt-2">
+    <%= form.submit class: "btn btn-success" %>
   </div>
 <% end %>

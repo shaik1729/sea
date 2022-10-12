@@ -75,3 +75,8 @@ a{
 .nav-item :hover{
   background: #2470dc;
 }
+
+#sidebarMenu{
+  position: fixed;
+  padding-top: 50px;
+}
