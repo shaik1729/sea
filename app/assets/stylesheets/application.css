@@ -71,3 +71,7 @@ a{
   display: flex;
   justify-content: flex-start;
 }
+
+.nav-item :hover{
+  background: #2470dc;
+}

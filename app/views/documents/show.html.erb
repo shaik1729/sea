@@ -1,71 +1,85 @@
-<p id="notice"><%= notice %></p>
+<div class="card">
+  <div class="card-body">
+    <div class="text-center">
+      <p>
+        <strong>Title:</strong>
+        <%= @document.title %>
+      </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @document.title %>
-</p>
+      <p>
+        <strong>Keywords:</strong>
+        <%= @document.keywords %>
+      </p>
 
-<p>
-  <strong>Keywords:</strong>
-  <%= @document.keywords %>
-</p>
+      <p>
+        <strong>Author:</strong>
+        <%= "#{@document.user.name} (#{@document.user.role.name}, #{@document.user.department.name})" %>
+      </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= "#{@document.user.name} (#{@document.user.role.name}, #{@document.user.department.name})" %>
-</p>
-
-
-<p>
-  <%= @document.content %>
-</p>
-
-<% if show_document_approval_status? %>
-  <p>
-    <strong>Approval status:</strong>
-    <%= @document.approval_status %>
-  </p>
-
-  <p>
-    <strong>Reviewer1:</strong>
-    <%= @document.reviewer1&.name %>
-  </p>
-
-  <p>
-    <strong>Reviewer2:</strong>
-    <%= @document.reviewer2&.name %>
-  </p>
-
-  <p>
-    <strong>Reviewer3:</strong>
-    <%= @document.reviewer3&.name %>
-  </p>
-<% end %>
-
-
-<% if show_document_approve_button? %>
-  <%= form_with url: approve_document_path, local: true, method: :put do  |f| %>
-    <div class="actions">
-      <%= f.submit "Approve" %>
     </div>
-  <% end %>
+    <p>
+      <%= @document.content %>
+    </p>
 
-  <%= form_with url: reject_document_path, local: true, method: :put do  |f| %>
-    <%= text_field_tag :reason, params[:reason], :placeholder => "Enter Reason", class: "form-control me-2",:required => 'required' %>
-    <div class="actions">
-      <%= f.submit "Reject" %>
+    <% if show_document_approval_status? %>
+      <p>
+        <strong>Approval status:</strong>
+        <%= @document.approval_status %>
+      </p>
+
+      <p>
+        <strong>Reviewer1:</strong>
+        <%= @document.reviewer1&.name %>
+      </p>
+
+      <p>
+        <strong>Reviewer2:</strong>
+        <%= @document.reviewer2&.name %>
+      </p>
+
+      <p>
+        <strong>Reviewer3:</strong>
+        <%= @document.reviewer3&.name %>
+      </p>
+    <% end %>
+
+
+    <% if show_document_approve_button? %>
+      <%= form_with url: approve_document_path, local: true, method: :put do  |f| %>
+        <div class="actions mt-4 mb-4">
+          <%= f.submit "Approve", class: "btn btn-success" %>
+        </div>
+      <% end %>
+
+      <%= form_with url: reject_document_path, local: true, method: :put do  |f| %>
+        <%= text_field_tag :reason, params[:reason], :placeholder => "Enter Reason", class: "form-control me-2",:required => 'required' %>
+        <div class="actions mt-4">
+          <%= f.submit "Reject", class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <p>Commenting as</p>
+    <div class="row mb-2">
+      <div class="col comment_avatar_view">
+        <iframe src="https://drive.google.com/file/d/<%= current_user.avatar_url %>/preview" class="avatar"></iframe>
+        <p class="m-2"><%= current_user.name.upcase! %></p>
+      </div>
     </div>
-  <% end %>
-<% end %>
+    <%= form_for [@document, Comment.new], method: :post do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.text_area :content, placeholder: "Add a comment...", class: "form-control" %><br/>
+        <%= f.submit "Comment", class: "btn btn-primary mb-4"  %>
+    <% end %>
 
-  <%= form_for [@document, Comment.new], method: :post do |f| %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.text_area :content, placeholder: "Add a comment..." %><br/>
-      <%= f.submit "Submit"  %>
-  <% end %>
+    <% if show_document_comments? %>
+      <%= render partial: 'comments/comment', collection: @document.comments.order(id: :desc) %>
+    <% end %>
 
-<% if show_document_comments? %>
-  <strong>Comments:</strong>
-
-  <%= render partial: 'comments/comment', collection: @document.comments.order(id: :desc) %>
-<% end %>
+  </div>
+</div>

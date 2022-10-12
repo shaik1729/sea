@@ -1,5 +1,9 @@
-<h1>New Document</h1>
-
-<%= render 'form', document: @document %>
-
-<%= link_to 'Back', documents_path %>
+<div class="card mt-4">
+  <div class="card-header">
+    New Document
+  </div>
+  <div class="card-body">
+    <%= render 'form', document: @document %>
+    <%= link_to 'Back', documents_path, class: "btn btn-secondary mt-3" %>
+  </div>
+</div>

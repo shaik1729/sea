@@ -11,7 +11,7 @@
       <th scope="col">ID</th>
       <th scope="col">Title</th>
       <th scope="col">Keywords</th>
-      <th scope="col" colspan="3"></th>
+      <th scope="col" colspan="4"></th>
     </tr>
   </thead>
 
@@ -21,10 +21,13 @@
         <td>A<%= article.id %></td>
         <td><%= article.title %></td>
         <td><%= article.keywords %></td>
+        <td><%= link_to 'VIEW', article, class: "btn btn-info btn-sm w-100" %></td>
         <% if current_user.is_student? %>
           <td><%= article.approval_status %></td>
+        <% else %>
+          <td><%= link_to 'Edit', edit_article_path(article), class: "btn btn-primary btn-sm w-100" %></td>
+          <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm w-100" %></td>
         <% end %>
-        <td><%= link_to 'VIEW', article, class: "btn btn-info btn-sm w-100" %></td>
       </tr>
     <% end %>
   </tbody>

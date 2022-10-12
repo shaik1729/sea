@@ -1,29 +1,29 @@
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse navbar">
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-          <span>Menu</span>
+          <span class="text-light">Menu</span>
           <a class="link-secondary" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle" class="align-text-bottom"></span>
           </a>
         </h6>
           <li class="nav-item">
-            <%= link_to "Articles", articles_path, class: "nav-link" %>
+            <%= link_to "Articles", articles_path, class: "nav-link text-light" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Documents", documents_path, class: "nav-link" %>
+            <%= link_to "Documents", documents_path, class: "nav-link text-light" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Magazines", magazines_path, class: "nav-link" %>
+            <%= link_to "Magazines", magazines_path, class: "nav-link text-light" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Notifications", notifications_path, class: "nav-link" %>
+            <%= link_to "Notifications", notifications_path, class: "nav-link text-light" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Results", results_path, class: "nav-link" %>
+            <%= link_to "Results", results_path, class: "nav-link text-light" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Tutorials", tutorials_path, class: "nav-link" %>
+            <%= link_to "Tutorials", tutorials_path, class: "nav-link text-light" %>
           </li>
 
 
@@ -61,14 +61,14 @@
         </h6>
         <ul class="nav flex-column mb-2">
                              <li class="nav-item">
-                    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
                 </li>
 
            
         </ul>
          <% else %>
                 <li class="nav-item">
-                    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                    <%= link_to "Login", new_user_session_path, class: "nav-link text-light" %>
                 </li>
             <% end %>
       </div>
