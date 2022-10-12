@@ -1,35 +1,73 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <%= link_to "SEA", root_path, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
-        <% if user_signed_in? %>
-            <li class="nav-item"><p class="nav-link m-0"><%= link_to "Documents", documents_path %></p></li>
-            <li class="nav-item"><p class="nav-link m-0"><%= link_to "Articles", articles_path %></p></li>
-            <li class="nav-item"><p class="nav-link m-0"><%= link_to "Tutorials", tutorials_path %></p></li>
-            <li class="nav-item"><p class="nav-link m-0"><%= link_to "Results", results_path %></p></li>
-            <li class="nav-item"><p class="nav-link m-0"><%= link_to "Magazine", magazines_path %></p></li>
-            <li class="nav-item"><p class="nav-link m-0"><%= link_to "Notifications", notifications_path %></p></li>            
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3 sidebar-sticky">
+        <ul class="nav flex-column">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+          <span>Menu</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle" class="align-text-bottom"></span>
+          </a>
+        </h6>
+          <li class="nav-item">
+            <%= link_to "Documents", documents_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Articles", articles_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Tutorials", tutorials_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Results", results_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Magazine", magazines_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Notifications", notifications_path, class: "nav-link" %>
+          </li>
+        </ul>
+            <% if user_signed_in? %>
 
-            <li class="nav-item">
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-                <p class="nav-link m-0"><%= current_user.email %></p>
-            </li>
-            <li class="nav-item">
-                <p class="nav-link m-0"><%= current_user.role.code %></p>
-            </li>
-        <% else %>
-            <li class="nav-item">
-                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li>
-        <% end %>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+          <span>Profile</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle" class="align-text-bottom"></span>
+          </a>
+        </h6>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+        <span>                
+            <%= "#{current_user.name}" %>
+        </span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle" class="align-text-bottom"></span>
+          </a>
+        </h6>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+          <span>                                <%= "#{current_user.email}" %>
+
+</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle" class="align-text-bottom"></span>
+          </a>
+        </h6>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+          <span>                <%= "#{current_user.role.name}" %>
+</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle" class="align-text-bottom"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+                             <li class="nav-item">
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                </li>
+
+           
+        </ul>
+         <% else %>
+                <li class="nav-item">
+                    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                </li>
+            <% end %>
+      </div>
+    </nav>
