@@ -1,39 +1,87 @@
-<p id="notice"><%= notice %></p>
+<div class="card">
+  <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <strong>Title</strong>
 
-<p>
-  <strong>Title:</strong>
-  <%= @notification.title %>
-</p>
+        </div>
+        <div class="col">
+          <p><%= @notification.title %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= "#{@notification.user&.name} (#{@notification.user&.role&.name}, #{@notification.user&.department&.name})" %>
-</p>
+        </div>
+      </div>
 
-<p>
-  <strong>Notification:</strong>
-  <%= @notification.content %>
-</p>
+      <div class="row">
+        <div class="col">
+          <strong>Published at</strong>
+        </div>
+        <div class="col">
+          <p><%= @notification.created_at %></p>
+        </div>
+      </div>
 
-<p>
-  <strong>Regulation:</strong>
-  <%= @notification.regulation&.name %>
-</p>
+      <div class="row">
+        <div class="col">
+          <strong>User</strong>
+        </div>
+        <div class="col">
+          <p><%= "#{@notification.user&.name} (#{@notification.user&.role&.name}, #{@notification.user&.department&.name})" %></p>
+        </div>
+      </div>
 
-<p>
-  <strong>Batch:</strong>
-  <%= @notification.batch&.name %>
-</p>
+      <div class="row">
+        <div class="col">
+          <strong>Regulation</strong>
+        </div>
+        <div class="col">
+          <p><%= @notification.regulation&.name %></p>
+        </div>
 
-<p>
-  <strong>Department:</strong>
-  <%= @notification.department&.name %>
-</p>
+      </div>
 
-<p>
-  <strong>Course:</strong>
-  <%= @notification.course&.name %>
-</p>
+      <div class="row">
+        <div class="col">
+          <strong>Batch</strong>
+        </div>
+        <div class="col">
+          <p><%= @notification.batch&.name %></p>
+        </div>
 
-<%= link_to 'Edit', edit_notification_path(@notification) %> |
-<%= link_to 'Back', notifications_path %>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <strong>Department</strong>
+        </div>
+        <div class="col">
+          <p><%= @notification.department&.name %></p>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <strong>Course</strong>
+        </div>
+        <div class="col">
+          <p><%= @notification.course&.name %></p>
+        </div>
+
+      </div>
+
+    
+      <div class="row border">
+        <div class="col">
+          <%= @notification.content %>
+        </div>
+      </div>
+
+      <div class="row text-center d-flex m-4">
+        <div class="col">
+          <%= link_to 'Back', notifications_path, class: "btn btn-secondary" %>
+        </div>
+      </div>
+     
+          
+  </div>
+</div>

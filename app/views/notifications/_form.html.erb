@@ -5,20 +5,22 @@
 
       <ul>
         <% notification.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <div class="alert alert-danger" role="alert">
+            <%= error.full_message %>
+          </div>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field mt-2">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
+  <div class="field mt-2">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.rich_text_area :content, class: "form-control"  %>
   </div>
 
   <div class="field d-none">
@@ -26,27 +28,27 @@
     <%= form.number_field :user_id, :value => current_user.id %>
   </div>
   
-  <div class="field">
-    <%= form.label :regulation_id %>
-    <%= form.collection_select :regulation_id, Regulation.all, :id, :name, {}, {class: "form-select"} %>
+  <div class="field mt-2">
+    <%= form.label :regulation_id, class: "form-label" %>
+    <%= form.collection_select :regulation_id, Regulation.all, :id, :name, {}, {class: "form-select"}  %>
   </div>
 
-  <div class="field">
-    <%= form.label :batch_id %>
-    <%= form.collection_select :batch_id, Batch.all, :id, :name, {}, {class: "form-select"} %>
+  <div class="field mt-2">
+    <%= form.label :batch_id, class: "form-label" %>
+    <%= form.collection_select :batch_id, Batch.all, :id, :name, {}, {class: "form-select"}  %>
   </div>
 
-  <div class="field">
-    <%= form.label :department_id %>
-    <%= form.collection_select :department_id, Department.all, :id, :name, {}, {class: "form-select"} %>
+  <div class="field mt-2">
+    <%= form.label :department_id, class: "form-label" %>
+    <%= form.collection_select :department_id, Department.all, :id, :name, {}, {class: "form-select"}  %>
   </div>
 
-  <div class="field">
-    <%= form.label :course_id %>
-    <%= form.collection_select :course_id, Course.all, :id, :name, {}, {class: "form-select"} %>
+  <div class="field mt-2">
+    <%= form.label :course_id, class: "form-label" %>
+    <%= form.collection_select :course_id, Course.all, :id, :name, {}, {class: "form-select"}  %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success mt-4" %>
   </div>
 <% end %>
