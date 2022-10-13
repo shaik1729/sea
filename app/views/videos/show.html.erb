@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= link_to '< Back', videos_path, class: "m-1 btn btn-sm btn-secondary" %>
 
 <p>
   <strong>Title:</strong>
@@ -7,15 +7,14 @@
 
 <video
     id="my-video"
-    class="video-js"
+    class="video-js vjs-default-skin vjs-16-9"
     controls
     preload="auto"
-    width="640"
-    height="264"
     poster=<%= url_for(@video.thumbnail) %>
     data-setup="{}"
   >
-    <source src=<%= url_for(@video.clip) %> type="video/mp4" />
+    <source src=<%= url_for(@video.clip) %> 
+    type="video/mp4" />
     <p class="vjs-no-js">
       To view this video please enable JavaScript, and consider upgrading to a
       web browser that
@@ -25,5 +24,4 @@
     </p>
   </video>
 
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+

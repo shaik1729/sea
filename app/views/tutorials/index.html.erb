@@ -1,50 +1,50 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'New Tutorial', new_tutorial_path %>
-<br>
-<%= link_to 'Videos', videos_path %>
-<h1>Your Tutorials</h1>
+<% if current_user.is_hod? %>
+  <%= link_to 'Create Tutorial', new_tutorial_path, class: "btn btn-primary mt-3 mb-3" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <%= link_to 'Add Videos', videos_path, class: "btn btn-primary mt-3 mb-3" %>
 
-  <tbody>
-    <% @your_tutorials.each do |tutorial| %>
-      <tr>
-        <td><%= tutorial.title %></td>
-        <td><%= link_to 'Show', tutorial %></td>
-        <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
-        <td><%= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <button class="collapsible">Your Tutorials</button>
+    <div class="content">
+    
+      <table class="table table-bordered table-sm table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col" colspan="3"></th>
+          </tr>
+        </thead>
 
-<br>
+        <tbody>
+          <% @your_tutorials.each do |tutorial| %>
+            <tr>
+              <td><%= tutorial.title %></td>
+              <td><%= link_to 'VIEW', tutorial, class: "btn btn-info btn-sm w-100" %></td>
+              <td><%= link_to 'EDIT', edit_tutorial_path(tutorial), class: "btn btn-primary btn-sm w-100" %></td>
+              <td><%= link_to 'DESTROY', tutorial, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm w-100" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<h1>Tutorials</h1>
+    </div>
+<% end %>
 
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <div class="row d-flex">
     <% @tutorials.each do |tutorial| %>
-      <tr>
-        <td><%= tutorial.title %></td>
-        <td><%= link_to 'Show', tutorial %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
+      <div class="col m-4">
+        <div class="card" style="width: 20rem;">
+          <%= image_tag(url_for(tutorial.thumbnail), class: "card-img-top" ) %>
+          <div class="card-body">  
+            <p class="fw-bold m-0"><%= tutorial.title %></p>
+            <small class="text-uppercase"><%= "#{tutorial.user.name} (#{tutorial.user.department.code})" %></small>
+            <%= link_to 'VIEW', tutorial, class: "btn btn-info btn-sm w-100 mt-2" %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

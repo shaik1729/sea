@@ -19,7 +19,6 @@ class User < ApplicationRecord
   has_many :results
   has_many :comments
 
-  validates :rollno, uniqueness: true
   validates :email, uniqueness: true
 
   def is_student?

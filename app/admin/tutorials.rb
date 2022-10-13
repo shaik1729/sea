@@ -5,7 +5,7 @@ ActiveAdmin.register Tutorial do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :user_id
+  permit_params :title, :user_id, :thumbnail
   #
   # or
   #
@@ -19,6 +19,7 @@ ActiveAdmin.register Tutorial do
       f.inputs "Tutorial" do
         f.input :title 
         f.input :user
+        f.input :thumbnail, as: :file
       end
       f.actions
     end  

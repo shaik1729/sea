@@ -85,6 +85,6 @@ class TutorialsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tutorial_params
-      params.require(:tutorial).permit(:title, :user_id)
+      params.require(:tutorial).permit(:title, :user_id, :thumbnail)
     end
 end

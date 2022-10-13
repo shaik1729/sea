@@ -121,9 +121,9 @@ class ArticlesController < ApplicationController
 
   def search
     if params[:id].empty?
-      @articles = Article.where("approval_status = ? and title like ?", Article::APPROVED, "%#{params[:title]}%").order("id DESC")
+      @articles = Article.where("approval_status = ? and title like ?", Article::APPROVED, "%#{params[:title]}%".upcase!).order("id DESC")
     else
-      @articles = Article.where("approval_status = ? and id = ?", Article::APPROVED, params[:id][1..].upcase!).order("id DESC")
+      @articles = Article.where("approval_status = ? and id = ?", Article::APPROVED, params[:id][1..]).order("id DESC")
     end
 
     if @articles.empty?

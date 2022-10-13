@@ -5,12 +5,7 @@ class VideosController < ApplicationController
 
   # GET /videos or /videos.json
   def index
-    if current_user.is_hod?
-      @your_videos = current_user.videos.all.order("id DESC")
-    else
-      @your_videos = []
-    end
-    @videos = Video.all.order("id DESC")
+    @your_videos = current_user.videos.all.order("id DESC")
   end
 
   # GET /videos/1 or /videos/1.json

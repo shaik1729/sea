@@ -5,25 +5,27 @@
 
       <ul>
         <% document.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <div class="alert alert-danger" role="alert">
+              <%= error.full_message %>
+          </div>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field mt-2">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :keywords %>
-    <%= form.text_field :keywords %>
+  <div class="field mt-2">
+    <%= form.label :keywords, class: "form-label" %>
+    <%= form.text_field :keywords, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
+  <div class="field mt-2">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.rich_text_area :content, class: "form-control" %>
   </div>
 
   <div class="field d-none">
@@ -32,6 +34,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success mt-4" %>
   </div>
 <% end %>

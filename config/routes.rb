@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   end
   
   get 'home/index'
+  get 'home/search'
   devise_for :users, :skip => [:registrations]
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

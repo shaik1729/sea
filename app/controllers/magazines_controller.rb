@@ -5,7 +5,7 @@ class MagazinesController < ApplicationController
 
   # GET /magazines or /magazines.json
   def index
-    @magazines = Magazine.all
+    @magazines = Magazine.all.order("id DESC")
   end
 
   # GET /magazines/1 or /magazines/1.json

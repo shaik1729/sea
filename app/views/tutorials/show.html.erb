@@ -1,37 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="row text-center bg-info m-1">
+  <div class="col-lg-10">
+    <p class="m-2 fw-bold"><%= @tutorial.title %></p>
+  </div>
+  <div class="col-lg-2">
+    <%= link_to '< Back', tutorials_path, class: "m-1 btn btn-sm btn-secondary"
+    %>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @tutorial.title %>
-</p>
-
-
-<% @videos.each do |video| %>
-
-  <p>
-    <strong>Title:</strong>
-    <%= video.title %>
-  </p>
-
-  <video
-    id="my-video"
-    class="video-js"
-    controls
-    preload="auto"
-    width="640"
-    height="264"
-    poster=<%= url_for(video.thumbnail) %>
-    data-setup="{}"
-  >
-    <source src=<%= url_for(video.clip) %> type="video/mp4" />
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that
-      <a href="https://videojs.com/html5-video-support/" target="_blank"
-        >supports HTML5 video</a
-      >
-    </p>
-  </video>
-
+<% @videos.each_with_index do |video, index| %>
+<button class="collapsible"><%= "#{index+1} ) #{video.title}" %></button>
+<div class="content">
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <video
+          id="my-video"
+          class="video-js vjs-default-skin vjs-16-9"
+          controls
+          preload="auto"
+          poster="<%= url_for(video.thumbnail) %>"
+          data-setup="{}" >
+          <source src="<%= url_for(video.clip) %>"
+          type="video/mp4" />
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading
+            to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank"
+              >supports HTML5 video</a
+            >
+          </p>
+        </video>
+      </div>
+      <div class="row mt-2">
+        <div class="card">
+          <div class="card-header fw-bold">Description</div>
+          <div class="card-body"><%= video.content %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
-<%= link_to 'Back', tutorials_path %>

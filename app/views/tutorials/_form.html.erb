@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field mt-2">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div class="field d-none">
@@ -21,7 +21,12 @@
     <%= form.number_field :user_id, :value => current_user.id %>
   </div>
 
+  <div class="field mt-2">
+    <%= form.label :thumbnail, class: "form-label" %>
+    <%= form.file_field :thumbnail, class: "form-control" %>
+  </div>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success mt-4" %>
   </div>
 <% end %>
