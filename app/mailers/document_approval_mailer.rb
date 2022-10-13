@@ -4,6 +4,6 @@ class DocumentApprovalMailer < ApplicationMailer
         @status = params[:status]
         @user = params[:user]
         @message = params[:message]
-        mail(to: @document.user.email, subject: "Status of ID : d#{@document.id}")
+        mail(to: @document.user.email, subject: "Status of ID : D#{@document.id}")
     end
 end
