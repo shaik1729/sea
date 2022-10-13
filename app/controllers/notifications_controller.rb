@@ -7,7 +7,7 @@ class NotificationsController < ApplicationController
   def index
     @notifications = Notification.where(user_id: nil).order("id DESC")
     if !current_user.is_student?
-      @your_notifications = current_user.notifications.all
+      @your_notifications = current_user.notifications.all.order("id DESC")
     end
   end
 
@@ -30,7 +30,10 @@ class NotificationsController < ApplicationController
 
     respond_to do |format|
       if @notification.save
-        NotificationMailer.with(title: @notification.title, regulation_id: @notification.regulation&.id, user_id: @notification.user&.id, batch_id: @notification.batch&.id, department_id: @notification.department&.id, course_id: @notification.course&.id).new_notification.deliver_later
+        @from = "#{current_user.name} (#{current_user.role.name} - #{current_user.department.name})"
+
+        NotificationMailer.with(title: @notification.title, regulation_id: @notification.regulation&.id, user_id: @notification.user&.id, batch_id: @notification.batch&.id, department_id: @notification.department&.id, course_id: @notification.course&.id, from: @from, url: notification_url(@notification)).new_notification.deliver_later
+
         format.html { redirect_to notification_url(@notification), notice: "Notification was successfully created." }
         format.json { render :show, status: :created, location: @notification }
       else

@@ -24,8 +24,11 @@
       </div>
       <div class="col">
         <p>
-          <%= "#{@notification.user&.name} (#{@notification.user&.role&.name},
-          #{@notification.user&.department&.name})" %>
+          <% if @notification.user.nil? %>
+            admin@sea.svit.gmail.com
+          <% else %>
+            <%= "#{@notification.user&.name} (#{@notification.user&.role&.code}, #{@notification.user&.department&.code})" %>
+          <% end %>
         </p>
       </div>
     </div>
@@ -35,7 +38,7 @@
         <strong>Regulation</strong>
       </div>
       <div class="col">
-        <p><%= @notification.regulation&.name %></p>
+        <p><%= @notification.regulation&.name || "All" %></p>
       </div>
     </div>
 
@@ -44,7 +47,7 @@
         <strong>Batch</strong>
       </div>
       <div class="col">
-        <p><%= @notification.batch&.name %></p>
+        <p><%= @notification.batch&.name || "All" %></p>
       </div>
     </div>
 
@@ -53,7 +56,7 @@
         <strong>Department</strong>
       </div>
       <div class="col">
-        <p><%= @notification.department&.name %></p>
+        <p><%= @notification.department&.name || "All" %></p>
       </div>
     </div>
 
@@ -62,7 +65,7 @@
         <strong>Course</strong>
       </div>
       <div class="col">
-        <p><%= @notification.course&.name %></p>
+        <p><%= @notification.course&.name || "All" %></p>
       </div>
     </div>
 
