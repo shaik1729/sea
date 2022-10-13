@@ -1,0 +1,138 @@
+<button class="collapsible">Articles</button>
+    <div class="content">
+
+    <table class="table table-bordered table-sm table-responsive">
+    <thead>
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Keywords</th>
+        <th scope="col" colspan="1"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @articles.each do |article| %>
+        <tr>
+            <td>A<%= article.id %></td>
+            <td><%= article.title %></td>
+            <td><%= article.keywords %></td>
+            <td><%= link_to 'VIEW', article, class: "btn btn-info btn-sm w-100" %></td>
+        </tr>
+        <% end %>
+    </tbody>
+
+    </table>
+    </div>
+
+<button class="collapsible">Documents</button>
+<div class="content">
+  
+    <table class="table table-bordered table-sm table-responsive">
+        <thead>
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Keywords</th>
+            <th scope="col" colspan="1"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @documents.each do |document| %>
+            <tr>
+                <td>D<%= document.id %></td>
+                <td><%= document.title %></td>
+                <td><%= document.keywords %></td>
+                <td><%= link_to 'VIEW', document, class: "btn btn-info btn-sm w-100" %></td>
+            </tr>
+            <% end %>
+        </tbody>
+
+    </table>
+
+    </div>
+
+
+<button class="collapsible">Magazines</button>
+    <div class="content">
+        <div class="container">
+            <div class="row d-flex">
+
+                <% @magazines.each do |magazine| %>
+
+                <div class="col">
+                    <div class="card text-center" style="width: 20rem;">
+                    <iframe src=<%= magazine.url %>  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="card-img-top" ></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= magazine.title %></h5>
+                        <h5 class="card-title"><%= magazine.created_at.to_date %></h5>
+                        <%= link_to 'VIEW', magazine, class: "btn btn-info btn-sm w-100" %>
+                    </div>
+                    </div>
+                </div>
+
+                <% end %>
+            </div>
+        </div>    
+    </div>
+
+
+<button class="collapsible">Notifications</button>
+
+    <div class="content">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                <div class="col-2">
+                    <h5>Published Date</h5>
+                </div>
+                <div class="col">
+                    <h5>Notifications</h5>
+                </div>
+                <div class="col-1">
+                    <h5>Link</h5>
+                </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <% @notifications&.each do |notification| %>
+                    <div class="row">
+                    <div class="col-2">
+                        <p><%= notification.created_at.strftime("%d-%m-%Y") %></p>
+                    </div>
+                    <div class="col">
+                        <p><%= notification.title %></p>
+                    </div>
+                    <div class="col-1">
+                        <p><%= link_to 'Show', notification, class: "btn btn-outline-info btn-sm w-100" %></p>
+                    </div>
+                    </div>
+                    <hr class="m-2 p-0">
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+
+<button class="collapsible">Tutorials</button>
+    <div class="content">
+        <div class="container">
+            <div class="row d-flex">
+                <% @tutorials.each do |tutorial| %>
+
+                <div class="col m-4">
+                    <div class="card" style="width: 20rem;">
+                    <%= image_tag(url_for(tutorial.thumbnail), class: "card-img-top" ) %>
+                    <div class="card-body">  
+                        <p class="fw-bold m-0"><%= tutorial.title %></p>
+                        <small class="text-uppercase"><%= "#{tutorial.user.name} (#{tutorial.user.department.code})" %></small>
+                        <%= link_to 'VIEW', tutorial, class: "btn btn-info btn-sm w-100 mt-2" %>
+                    </div>
+                    </div>
+                </div>
+
+                <% end %>
+            </div>
+        </div>
+    </div>
