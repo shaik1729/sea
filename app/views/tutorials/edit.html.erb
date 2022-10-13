@@ -1,6 +1,9 @@
-<h1>Editing Tutorial</h1>
-
-<%= render 'form', tutorial: @tutorial %>
-
-<%= link_to 'Show', @tutorial %> |
-<%= link_to 'Back', tutorials_path %>
+<div class="card mt-4">
+  <div class="card-header">
+    Editing Tutorial
+  </div>
+  <div class="card-body">
+    <%= render 'form', tutorial: @tutorial %>
+    <%= link_to 'Back', tutorials_path, class: "btn btn-secondary mt-3" %>
+  </div>
+</div>
