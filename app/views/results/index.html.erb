@@ -1,4 +1,6 @@
-<%= link_to 'Add Results', new_result_path, class: "btn btn-primary mt-3" %>
+<% if current_user.is_hod? %>
+  <%= link_to 'Add Results', new_result_path, class: "btn btn-primary mt-3" %>
+<% end %>
 
 <div class="card mt-3">
   <div class="card-header">
