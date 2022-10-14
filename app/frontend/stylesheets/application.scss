@@ -1,0 +1,76 @@
+// inside app/frontend/packs/application.scss  
+  
+// Just a quick ugly style to see if our CSS works  
+h1 {  
+    text-decoration: underline;  
+  }  
+    
+  // Import Bootstrap v5  
+  @import "~bootstrap/scss/bootstrap";  
+  
+
+  .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  .collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "\2212";
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+  
+  .comment-form{
+    display: none;
+  }
+  
+  
+  
+  a{
+    text-decoration: none !important;
+  }
+  
+  .avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .comment_avatar_view{
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .nav-item :hover{
+    background: #2470dc;
+  }
+  
+  #sidebarMenu{
+    position: fixed;
+    padding-top: 50px;
+  }
