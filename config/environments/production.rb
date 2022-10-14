@@ -124,4 +124,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+  config.secret_key_base = "6dde1365cdb4d329a10696bb9c04ae09d09a40872f4c16463d92c3f0c46584430e71c4d716e2e1ab1b89e4776b1094f963d6a04f0600dd0fe447f83471989674"
 end
