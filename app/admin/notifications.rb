@@ -19,7 +19,6 @@ ActiveAdmin.register Notification do
       f.inputs "Notification" do
         f.input :title
         f.rich_text_area :content
-        f.input :user
         f.input :regulation
         f.input :batch
         f.input :department
@@ -29,7 +28,7 @@ ActiveAdmin.register Notification do
     end
 
     after_create do |notification|
-      NotificationMailer.with(title: notification.title, regulation_id: notification.regulation&.id, user_id: notification.user&.id, batch_id: notification.batch&.id, department_id: notification.department&.id, course_id: notification.course&.id).new_notification.deliver_later
+      NotificationMailer.with(title: notification.title, regulation_id: notification.regulation&.id, user_id: notification.user&.id, batch_id: notification.batch&.id, department_id: notification.department&.id, course_id: notification.course&.id,from: "admin@sea.svit.gmail.com", url: notification_url(notification)).new_notification.deliver_later
     end
 
     show do

@@ -6,6 +6,8 @@ class NotificationMailer < ApplicationMailer
         @batch_id = params[:batch_id]
         @department_id = params[:department_id]
         @course_id = params[:course_id]
+        @from = params[:from]
+        @url = params[:url]
 
         if @department_id.nil? && @regulation_id.nil? && @batch_id.nil? && @course_id.nil?
             mail(to: User.all.map(&:email).join(';'), subject: "#{@title}")

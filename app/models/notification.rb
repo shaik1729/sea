@@ -8,10 +8,6 @@ class Notification < ApplicationRecord
 
     validates :title, presence: true
     validates :content, presence: true
-    validates :regulation_id, presence: true
-    validates :batch_id, presence: true
-    validates :department_id, presence: true
-    validates :course_id, presence: true
 
     before_save :upcase_fields
 

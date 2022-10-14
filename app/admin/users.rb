@@ -61,4 +61,8 @@ ActiveAdmin.register User do
       actions
     end
 
+    after_create do |user|
+      WelcomeMailer.with(name: user.name, email: user.email, password: user.password).welcome_user.deliver_later
+    end
+
 end

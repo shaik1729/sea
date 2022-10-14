@@ -4,6 +4,6 @@ class ArticleApprovalMailer < ApplicationMailer
         @status = params[:status]
         @user = params[:user]
         @message = params[:message]
-        mail(to: @article.user.email, subject: "Status of ID : d#{@article.id}")
+        mail(to: @article.user.email, subject: "Status of ID : D#{@article.id}")
     end
 end

@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'sea@svit.com'
+  default from: 'svit.sea@gmail.com'
   layout 'mailer'
 end
