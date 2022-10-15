@@ -15,6 +15,28 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+//= require jquery
+//= require jquery_ujs
+//= require_tree .
+
+//trix editor
+import 'trix/dist/trix.css';
+// import 'trix/dist/trix.js';
+
 console.log('Hello World from Webpacker')
 
 import '../js/bootstrap_js_files.js'
+
+import Rails from "@rails/ujs"
+import Turbolinks from "turbolinks"
+import * as ActiveStorage from "@rails/activestorage"
+
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
+
+require("trix")
+require("@rails/actiontext")
+require("jquery")
+
+console.log('Hello World from Webpacker pluging')

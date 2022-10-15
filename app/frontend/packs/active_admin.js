@@ -3,3 +3,9 @@
 import "../stylesheets/active_admin";
 
 import "@activeadmin/activeadmin";
+
+require("trix")
+require("@rails/actiontext")
+require("jquery")
+
+import 'trix/dist/trix.css';
