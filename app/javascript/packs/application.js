@@ -15,9 +15,9 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
+// require jquery
+// require jquery_ujs
+// require tree .
 
 //trix editor
 import 'trix/dist/trix.css';
@@ -25,7 +25,6 @@ import 'trix/dist/trix.css';
 
 console.log('Hello World from Webpacker')
 
-import '../js/bootstrap_js_files.js'
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -40,3 +39,10 @@ require("@rails/actiontext")
 require("jquery")
 
 console.log('Hello World from Webpacker pluging')
+
+require("@popperjs/core")
+
+import "bootstrap"
+
+// The stylesheet location we created earlier
+require("../stylesheets/bootstrap.scss")
