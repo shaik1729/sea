@@ -1,34 +1,37 @@
 <%= render 'search_form' %>
 
 <div class="card mt-4">
-  <div class="card-header">
+  <h2 class="card-header">
     Search Results
-  </div>
+  </h2>
   <div class="card-body">
-    <table class="table table-bordered table-sm table-responsive">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Title</th>
-          <th scope="col">Keywords</th>
-          <th scope="col">Author</th>
-          <th scope="col" colspan="3"></th>
-        </tr>
-      </thead>
+    <div class="table-responsive">
 
-      <tbody>
-        <% @articles.each do |article| %>
+      <table class="table table-bordered table-sm">
+        <thead>
           <tr>
-            <td>A<%= article.id %></td>
-            <td><%= article.title %></td>
-            <td><%= article.keywords %></td>
-            <td><%= "#{article.user.name} (#{article.user.role.name} #{article.user.department.code})" %></td>
-            <td><%= link_to 'VIEW', article, class: "btn btn-info btn-sm w-100" %></td>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Keywords</th>
+            <th scope="col">Author</th>
+            <th scope="col" colspan="3"></th>
           </tr>
-        <% end %>
-      </tbody>
+        </thead>
 
-    </table>
+        <tbody>
+          <% @articles.each do |article| %>
+            <tr>
+              <td>A<%= article.id %></td>
+              <td><%= article.title %></td>
+              <td><%= article.keywords %></td>
+              <td><%= "#{article.user.name} (#{article.user.role.name} #{article.user.department.code})" %></td>
+              <td><%= link_to 'VIEW', article, class: "btn btn-info btn-sm w-100" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
   </div>
 </div>
 

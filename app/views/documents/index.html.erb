@@ -3,43 +3,46 @@
 
 <button class="collapsible">Your Documents</button>
 <div class="content">
-  
-  <table class="table table-bordered table-sm table-responsive">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Title</th>
-      <th scope="col">Keywords</th>
-      <th scope="col" colspan="4"></th>
-    </tr>
-  </thead>
+  <div class="table-responsive">
 
-  <tbody>
-    <% @documents.each do |document| %>
-      <tr>
-        <td>D<%= document.id %></td>
-        <td><%= document.title %></td>
-        <td><%= document.keywords %></td>
-        <td><%= link_to 'VIEW', document, class: "btn btn-info btn-sm w-100" %></td>
-        <% if current_user.is_student? %>
-          <td><%= document.approval_status %></td>
-        <% else %>
-          <td><%= link_to 'Edit', edit_document_path(document), class: "btn btn-primary btn-sm w-100" %></td>
-          <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm w-100" %></td>
+      
+      <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Keywords</th>
+          <th scope="col" colspan="4"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @documents.each do |document| %>
+          <tr>
+            <td>D<%= document.id %></td>
+            <td><%= document.title %></td>
+            <td><%= document.keywords %></td>
+            <td><%= link_to 'VIEW', document, class: "btn btn-info btn-sm w-100" %></td>
+            <% if current_user.is_student? %>
+              <td><%= document.approval_status %></td>
+            <% else %>
+              <td><%= link_to 'Edit', edit_document_path(document), class: "btn btn-primary btn-sm w-100" %></td>
+              <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm w-100" %></td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
+      </tbody>
 
-</table>
-
+    </table>
+  </div>
 </div>
 <% if !current_user.is_student? %>
 
 <button class="collapsible">Awaiting Review Documents</button>
 <div class="content">
-  
-    <table class="table table-bordered table-sm table-responsive">
+  <div class="table-responsive">
+
+    <table class="table table-bordered table-sm">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -69,12 +72,14 @@
     </tbody>
 
   </table>
+  </div>
 </div>
 
 <button class="collapsible">Reviewed Documents</button>
   <div class="content">
-    
-  <table class="table table-bordered table-sm table-responsive">
+      <div class="table-responsive">
+
+  <table class="table table-bordered table-sm">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -103,7 +108,7 @@
       </tbody>
 
     </table>
-
+  </div>
   </div>
  
 <% end %>
