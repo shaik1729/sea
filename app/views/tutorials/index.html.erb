@@ -6,26 +6,27 @@
 
   <button class="collapsible">Your Tutorials</button>
     <div class="content">
-    
-      <table class="table table-bordered table-sm table-responsive">
-        <thead>
-          <tr>
-            <th scope="col">Title</th>
-            <th scope="col" colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @your_tutorials.each do |tutorial| %>
+      <div class="table-responsive" >
+        <table class="table table-bordered table-sm">
+          <thead>
             <tr>
-              <td><%= tutorial.title %></td>
-              <td><%= link_to 'VIEW', tutorial, class: "btn btn-info btn-sm w-100" %></td>
-              <td><%= link_to 'EDIT', edit_tutorial_path(tutorial), class: "btn btn-primary btn-sm w-100" %></td>
-              <td><%= link_to 'DESTROY', tutorial, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm w-100" %></td>
+              <th scope="col">Title</th>
+              <th scope="col" colspan="3"></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            <% @your_tutorials.each do |tutorial| %>
+              <tr>
+                <td><%= tutorial.title %></td>
+                <td><%= link_to 'VIEW', tutorial, class: "btn btn-info btn-sm w-100" %></td>
+                <td><%= link_to 'EDIT', edit_tutorial_path(tutorial), class: "btn btn-primary btn-sm w-100" %></td>
+                <td><%= link_to 'DESTROY', tutorial, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm w-100" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
     </div>
 <% end %>

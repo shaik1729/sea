@@ -4,36 +4,38 @@
 
     <button class="collapsible">Your Notifications</button>
     <div class="content">
+      <div class="table-responsive">
 
-      <table class="table table-bordered table-sm table-responsive">
-        <thead>
-          <tr>
-            <th scope="col">Published Date</th>
-            <th scope="col">Regulation</th>
-            <th scope="col">Batch</th>
-            <th scope="col">Department</th>
-            <th scope="col">Course</th>
-            <th scope="col" colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @your_notifications.each do |notification| %>
+        <table class="table table-bordered table-sm">
+          <thead>
             <tr>
-              <td><%= notification.created_at.strftime("%d/%m/%Y") %></td>
-              <td><%= notification.title %></td>
-              <td><%= notification.regulation&.code %></td>
-              <td><%= notification.batch&.name %></td>
-              <td><%= notification.department&.code %></td>
-              <td><%= notification.course&.code %></td>
-              <td><%= link_to 'VIEW', notification, class: "btn btn-info btn-sm w-100" %></td>
-              <td><%= link_to 'EDIT', edit_notification_path(notification), class: "btn btn-primary btn-sm w-100" %></td>
-              <td><%= link_to 'DESTROY', notification, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm w-100" %></td>
+              <th scope="col">Published Date</th>
+              <th scope="col">Regulation</th>
+              <th scope="col">Batch</th>
+              <th scope="col">Department</th>
+              <th scope="col">Course</th>
+              <th scope="col" colspan="3"></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
 
+          <tbody>
+            <% @your_notifications.each do |notification| %>
+              <tr>
+                <td><%= notification.created_at.strftime("%d/%m/%Y") %></td>
+                <td><%= notification.title %></td>
+                <td><%= notification.regulation&.code %></td>
+                <td><%= notification.batch&.name %></td>
+                <td><%= notification.department&.code %></td>
+                <td><%= notification.course&.code %></td>
+                <td><%= link_to 'VIEW', notification, class: "btn btn-info btn-sm w-100" %></td>
+                <td><%= link_to 'EDIT', edit_notification_path(notification), class: "btn btn-primary btn-sm w-100" %></td>
+                <td><%= link_to 'DESTROY', notification, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm w-100" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
     </div>
   <br>
 <% end %>

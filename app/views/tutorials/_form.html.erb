@@ -13,7 +13,7 @@
 
   <div class="field mt-2">
     <%= form.label :title, class: "form-label" %>
-    <%= form.text_field :title, class: "form-control" %>
+    <%= form.text_field :title, class: "form-control", required: "required" %>
   </div>
 
   <div class="field d-none">
@@ -23,7 +23,7 @@
 
   <div class="field mt-2">
     <%= form.label :thumbnail, class: "form-label" %>
-    <%= form.file_field :thumbnail, class: "form-control" %>
+    <%= form.file_field :thumbnail, class: "form-control", required: "required" %>
   </div>
 
   <div class="actions">
