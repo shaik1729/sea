@@ -4,12 +4,16 @@
   <!-- Marketing messaging and featurettes
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
-<hr class="featurette-divider">
 
+<div class="container marketing">
 
-  <div class="container marketing">
+    <hr class="featurette-divider">
 
-    <%= render 'home/members' %>
+    <div class="row featurette">
+      <div class="col">
+        <%= render 'home/members' %>
+      </div>
+    </div>
 
     <!-- START THE FEATURETTES -->
 
@@ -24,6 +28,15 @@
       </div>
       <div class="col-md-5">
         <%= image_tag('mlogo.jpeg', class: "w-100 bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto") %>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col">
+        <h2 class="featurette-heading fw-normal lh-1 text-center bg-info text-light p-2 text-uppercase">Departments & hod's</h2>
+        <%= render 'home/profiles' %>
       </div>
     </div>
 
