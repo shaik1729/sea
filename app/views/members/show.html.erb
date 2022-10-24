@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="card d-flex flex-row shadow-lg p-3 mb-5 bg-body rounded" style="width: 100%">
+        <div class="card-body">
+            <h5 class="card-title"><%= @member.name %></h5>
+            <p class="card-text"><%= @member.designation %></p>
+            <p class="card-text"><%= @member.content %></p>
+        </div>
+        <%= image_tag(url_for(@member.image), class: "card-img-top m-4 shadow-lg p-3 mb-5 bg-body rounded", style: "width: 300px; height: 300px" ) %>
+    </div>
+</div>

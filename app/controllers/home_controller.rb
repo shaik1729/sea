@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
     @sliders = Slider.all.order("id DESC")
+    @members = Member.all
   end
 
   def search
