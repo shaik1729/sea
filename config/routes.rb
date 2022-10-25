@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :departments  
   resources :members
   resources :results do
     collection {post :import }
