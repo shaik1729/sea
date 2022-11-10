@@ -1,49 +1,14 @@
    <!-- Three columns of text below the carousel -->
     <div class="row mt-4 d-flex justify-content-around">
-      <div class="card" style="width: 18rem; margin-top: 10px;">
-        <%= image_tag('corrospondent.jpeg', class: "card-img-top") %>
-        <div class="card-body">
-          <h5 class="card-title">Sri V.B.R SHARMA</h5>
-          <p class="card-text">Founder and Correspondent & Secretary</p>
-          <a href="#" class="btn btn-primary">Know More</a>
+      <% @members.each do |member| %>
+        <div class="card" style="width: 18rem; margin-top: 10px;">
+          <%= image_tag(url_for(member.image), class: "card-img-top" ) %>
+          <div class="card-body">
+            <h5 class="card-title"><%= member.name %></h5>
+            <p class="card-text"><%= member.designation %></p>
+            <%= link_to 'Know More', member, class: "btn btn-info btn-sm w-100" %>
+          </div>
         </div>
-      </div>
-
-      <div class="card" style="width: 18rem; margin-top: 10px;">
-        <%= image_tag('president.png', class: "card-img-top") %>
-        <div class="card-body">
-          <h5 class="card-title">Sri B.V KRISHNA REDDY</h5>
-          <p class="card-text">president</p>
-          <a href="#" class="btn btn-primary">Know More</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem; margin-top: 10px;">
-        <%= image_tag('vice_president.jpeg', class: "card-img-top") %>
-        <div class="card-body">
-          <h5 class="card-title">Sri VENNAPUSA RAVINDRA REDDY</h5>
-          <p class="card-text">vice-president</p>
-          <a href="#" class="btn btn-primary">Know More</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem; margin-top: 10px;">
-        <%= image_tag('ceo.jpg', class: "card-img-top") %>
-        <div class="card-body">
-          <h5 class="card-title">DR. ANAND KUMAR</h5>
-          <p class="card-text">Chief executive officer</p>
-          <a href="#" class="btn btn-primary">Know More</a>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem; margin-top: 10px;">
-        <%= image_tag('principal.jpg', class: "card-img-top") %>
-        <div class="card-body">
-          <h5 class="card-title">DR. T. SURYA SEKHAR REDDY</h5>
-          <p class="card-text">principal</p>
-          <a href="#" class="btn btn-primary">Know More</a>
-        </div>
-      </div>
-
+      <% end %>
     </div>
 

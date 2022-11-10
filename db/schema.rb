@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_08_104956) do
+ActiveRecord::Schema.define(version: 2022_10_25_102134) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -131,6 +131,8 @@ ActiveRecord::Schema.define(version: 2022_10_08_104956) do
     t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "vision"
+    t.text "mission"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -148,6 +150,13 @@ ActiveRecord::Schema.define(version: 2022_10_08_104956) do
   create_table "magazines", force: :cascade do |t|
     t.string "title"
     t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "name"
+    t.string "designation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -195,6 +204,13 @@ ActiveRecord::Schema.define(version: 2022_10_08_104956) do
 
   create_table "semesters", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sliders", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
