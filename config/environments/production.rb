@@ -121,8 +121,19 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.delivery_method = :letter_opener
+  
+  config.action_mailer.default_url_options = { host: ENV['DOMAIN_NAME'], protocol: 'https' }
   config.action_mailer.perform_deliveries = true
   config.secret_key_base = "6dde1365cdb4d329a10696bb9c04ae09d09a40872f4c16463d92c3f0c46584430e71c4d716e2e1ab1b89e4776b1094f963d6a04f0600dd0fe447f83471989674"
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               ENV['DOMAIN_NAME'],
+    user_name:            ENV['GMAIL_USERNAME'],
+    password:             ENV['GMAIL_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true,
+  }
 end
