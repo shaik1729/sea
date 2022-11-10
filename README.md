@@ -15,7 +15,7 @@ Things you may want to cover:
 
 # setting application
 
-Step 1 : clone the repository 
+Step 1 : clone the repository
 
 * $ git clone https://github.com/shaik1729/sea.git
 
@@ -34,7 +34,7 @@ step 3 : make bundle install
 * $ cd sea
 * $ bundle install
 
-step 4 : create migrate and seed database 
+step 4 : create migrate and seed database
 
 * $ rails db:create db:migrate db:seed
 
@@ -42,10 +42,8 @@ step 5 : installing webpacker
 
 * $ npm install
 * $ yarn install
-
 * $ rails webpacker:install
 * $ rails webpacker:compile
-
 * $ rails assets:precompile
 
 step 6 : run server
@@ -81,3 +79,30 @@ step 6 : run the server
 
 * $ rails s
 * visit the url http://localhost:3000
+
+# Assets not loading in production
+
+
+If assets are not loading getting application.css and active_admin.css missing then follow this steps
+
+step 1 : remove the public folder
+
+* $ rm -rf public/packs
+
+step 2 : remove the webpacker
+
+* $ rm -rf bin/webpack*
+
+step 3 : install webpacker
+
+* $ rails webpacker:install
+
+step 4 : compile webpacker
+
+* $ RAILS_ENV=production rails webpacker:compile
+
+step 6 : run the server
+
+* $ rails s -e production
+* visit the url http://localhost:3000
+* visit the url http://localhost:3000/admin/login
