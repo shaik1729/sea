@@ -1,22 +1,36 @@
 <div class="card">
   <div class="card-body">
-    <div class="text-center">
-      <p>
-        <strong>Title:</strong>
-        <%= @article.title %>
-      </p>
-
-      <p>
-        <strong>Keywords:</strong>
-        <%= @article.keywords %>
-      </p>
-
-      <p>
-        <strong>Author:</strong>
-        <%= "#{@article.user.name} (#{@article.user.role.name}, #{@article.user.department.name})" %>
-      </p>
-
+    <div class="row">
+      <div class="col">
+        <p>
+          <strong>Title:</strong>
+          <%= @article.title %>
+        </p>
+  
+        <p>
+          <strong>Keywords:</strong>
+          <%= @article.keywords %>
+        </p>
+  
+        <p>
+          <strong>Author:</strong>
+          <%= "#{@article.user.name} (#{@article.user.role.name}, #{@article.user.department.name})" %>
+        </p>
+    
+      </div>
+      <% if @qrcode %>
+        <div class="col">
+          <p>
+            <strong>Attachments/References:</strong>
+            <br>
+            <a href="<%= @article.terabox_url %>" class="btn btn-primary" target="_blank">Click Here!</a>
+          </p>
+          <img src="data:image/jpeg;base64,<%= @qrcode %>">
+        </div>
+      <% end %>
     </div>
+      
+
     <p>
       <%= @article.content %>
     </p>
@@ -58,7 +72,6 @@
         </div>
       <% end %>
     <% end %>
-
   </div>
 </div>
 
