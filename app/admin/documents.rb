@@ -5,7 +5,7 @@ ActiveAdmin.register Document do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :keywords, :content, :approval_status, :reviewer1_id, :reviewer2_id, :reviewer3_id, :user_id
+  permit_params :title, :keywords, :content, :approval_status, :reviewer1_id, :reviewer2_id, :reviewer3_id, :user_id, :terabox_url
   #
   # or
   #
@@ -20,6 +20,7 @@ ActiveAdmin.register Document do
         f.input :title
         f.input :keywords
         f.rich_text_area :content
+        f.input :terabox_url
         f.input :user
       end
       f.actions
@@ -39,6 +40,7 @@ ActiveAdmin.register Document do
         row :title
         row :keywords
         row :approval_status
+        row :terabox_url
         row :content do
           div resource.content
         end
