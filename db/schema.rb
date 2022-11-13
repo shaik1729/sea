@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_13_050435) do
+ActiveRecord::Schema.define(version: 2022_11_13_075538) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 2022_11_13_050435) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "terabox_url"
   end
 
   create_table "magazines", force: :cascade do |t|

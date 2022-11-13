@@ -1,22 +1,35 @@
 <div class="card">
   <div class="card-body">
-    <div class="text-center">
-      <p>
-        <strong>Title:</strong>
-        <%= @document.title %>
-      </p>
+    <div class="row">
+      <div class="col">
+        <p>
+          <strong>Title:</strong>
+          <%= @document.title %>
+        </p>
 
-      <p>
-        <strong>Keywords:</strong>
-        <%= @document.keywords %>
-      </p>
+        <p>
+          <strong>Keywords:</strong>
+          <%= @document.keywords %>
+        </p>
 
-      <p>
-        <strong>Author:</strong>
-        <%= "#{@document.user.name} (#{@document.user.role.name}, #{@document.user.department.name})" %>
-      </p>
+        <p>
+          <strong>Author:</strong>
+          <%= "#{@document.user.name} (#{@document.user.role.name}, #{@document.user.department.name})" %>
+        </p>
+      </div>
 
+      <% if @qrcode %>
+          <div class="col">
+            <p>
+              <strong>Attachments/References:</strong>
+              <br>
+              <a href="<%= @document.terabox_url %>" class="btn btn-primary" target="_blank">Click Here!</a>
+            </p>
+            <img src="data:image/jpeg;base64,<%= @qrcode %>">
+          </div>
+      <% end %>
     </div>
+
     <p>
       <%= @document.content %>
     </p>

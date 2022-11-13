@@ -18,6 +18,20 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1 or /documents/1.json
   def show
+
+    if @document.terabox_url.present?
+      url = URI("https://api.qrcode-monkey.com/qr/custom")
+      https = Net::HTTP.new(url.host, url.port)
+      https.use_ssl = true
+      request = Net::HTTP::Post.new(url)
+      request["Content-Type"] = "text/plain"
+      request.body = {"data":"#{@document.terabox_url}","config":{"body":"circle-zebra-vertical","eye":"frame13","eyeBall":"ball15","erf1":[],"erf2":[],"erf3":[],"brf1":[],"brf2":[],"brf3":[],"bodyColor":"#0277BD","bgColor":"#FFFFFF","eye1Color":"#075685","eye2Color":"#075685","eye3Color":"#075685","eyeBall1Color":"#0277BD","eyeBall2Color":"#0277BD","eyeBall3Color":"#0277BD","gradientColor1":"#075685","gradientColor2":"#0277BD","gradientType":"linear","gradientOnEyes":false,"logo":"https://raw.githubusercontent.com/shaik1729/sea/development/app/assets/images/sea_logo.jpeg","logoMode":"default"},"size":300,"download":false,"file":"png"}.to_json
+      response = https.request(request)
+      @qrcode = Base64.strict_encode64(response.read_body)
+    else
+      @qrcode = nil
+    end
+
   end
 
   # GET /documents/new
@@ -160,6 +174,6 @@ class DocumentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def document_params
-      params.require(:document).permit(:title, :keywords, :content, :approval_status, :reviewer1_id, :reviewer2_id, :reviewer3_id, :user_id)
+      params.require(:document).permit(:title, :keywords, :content, :approval_status, :reviewer1_id, :reviewer2_id, :reviewer3_id, :user_id, :terabox_url)
     end
 end
