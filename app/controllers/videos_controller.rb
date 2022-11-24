@@ -27,7 +27,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to video_url(@video), notice: "Video was successfully created." }
+        format.html { redirect_to videos_path, notice: "Video was successfully created." }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class VideosController < ApplicationController
   def update
     respond_to do |format|
       if @video.update(video_params)
-        format.html { redirect_to video_url(@video), notice: "Video was successfully updated." }
+        format.html { redirect_to videos_path, notice: "Video was successfully updated." }
         format.json { render :show, status: :ok, location: @video }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -79,6 +79,6 @@ class VideosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def video_params
-      params.require(:video).permit(:title, :content, :clip, :thumbnail, :tutorial_id, :user_id)
+      params.require(:video).permit(:title, :content, :tutorial_id, :user_id, :terabox_video_url)
     end
 end

@@ -16,6 +16,29 @@ class TutorialsController < ApplicationController
   # GET /tutorials/1 or /tutorials/1.json
   def show
     @videos = @tutorial.videos.all
+    @qrcodes = []
+    
+    @videos.each do |video|
+
+      if video.terabox_video_url.present?
+        begin
+          url = URI("https://api.qrcode-monkey.com/qr/custom")
+          https = Net::HTTP.new(url.host, url.port)
+          https.use_ssl = true
+          request = Net::HTTP::Post.new(url)
+          request["Content-Type"] = "text/plain"
+          request.body = {"data":"#{video.terabox_video_url}","config":{"body":"circle-zebra-vertical","eye":"frame13","eyeBall":"ball15","erf1":[],"erf2":[],"erf3":[],"brf1":[],"brf2":[],"brf3":[],"bodyColor":"#0277BD","bgColor":"#FFFFFF","eye1Color":"#075685","eye2Color":"#075685","eye3Color":"#075685","eyeBall1Color":"#0277BD","eyeBall2Color":"#0277BD","eyeBall3Color":"#0277BD","gradientColor1":"#075685","gradientColor2":"#0277BD","gradientType":"linear","gradientOnEyes":false,"logo":"https://raw.githubusercontent.com/shaik1729/sea/development/app/assets/images/sea_logo.jpeg","logoMode":"default"},"size":300,"download":false,"file":"png"}.to_json
+          response = https.request(request)
+          @qrcodes << Base64.strict_encode64(response.read_body)
+        rescue => exception
+          puts "*************************************#{exception}**************************"
+          @qrcode << nil
+        end
+      else
+        @qrcode << nil
+      end
+    end
+
   end
 
   # GET /tutorials/new
@@ -33,7 +56,7 @@ class TutorialsController < ApplicationController
 
     respond_to do |format|
       if @tutorial.save
-        format.html { redirect_to tutorial_url(@tutorial), notice: "Tutorial was successfully created." }
+        format.html { redirect_to tutorials_path, notice: "Tutorial was successfully created." }
         format.json { render :show, status: :created, location: @tutorial }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -46,7 +69,7 @@ class TutorialsController < ApplicationController
   def update
     respond_to do |format|
       if @tutorial.update(tutorial_params)
-        format.html { redirect_to tutorial_url(@tutorial), notice: "Tutorial was successfully updated." }
+        format.html { redirect_to tutorials_path, notice: "Tutorial was successfully updated." }
         format.json { render :show, status: :ok, location: @tutorial }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -85,6 +108,6 @@ class TutorialsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tutorial_params
-      params.require(:tutorial).permit(:title, :user_id, :thumbnail)
+      params.require(:tutorial).permit(:title, :user_id)
     end
 end

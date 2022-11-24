@@ -20,12 +20,7 @@
     <%= form.label :user_id %>
     <%= form.number_field :user_id, :value => current_user.id %>
   </div>
-
-  <div class="field mt-2">
-    <%= form.label :thumbnail, class: "form-label" %>
-    <%= form.file_field :thumbnail, class: "form-control", required: "required" %>
-  </div>
-
+  
   <div class="actions">
     <%= form.submit class: "btn btn-success mt-4" %>
   </div>
