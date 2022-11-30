@@ -6,7 +6,11 @@
           <div class="swiper-slide profile">
             <div class="profile-content">
               <div class="image">
+              <% if department.logo.present? %>
                 <%= image_tag(department.logo, class: "w-100 h-100 rounded-circle") %>
+              <% else %>
+                <%= image_tag('sea_logo.jpeg', class: "w-100 h-100 rounded-circle") %>             
+              <% end %>
               </div>
 
               <div class="name-profession">

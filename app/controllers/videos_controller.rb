@@ -10,6 +10,8 @@ class VideosController < ApplicationController
 
   # GET /videos/1 or /videos/1.json
   def show
+    link = @video.video_url.split("=")[1]
+    @iframe_url = "https://www.youtube.com/embed/#{link}"
   end
 
   # GET /videos/new
@@ -79,6 +81,6 @@ class VideosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def video_params
-      params.require(:video).permit(:title, :content, :tutorial_id, :user_id, :terabox_video_url)
+      params.require(:video).permit(:title, :content, :tutorial_id, :user_id, :video_url)
     end
 end

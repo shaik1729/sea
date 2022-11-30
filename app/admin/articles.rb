@@ -5,7 +5,7 @@ ActiveAdmin.register Article do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :keywords, :approval_status, :reviewer1_id, :reviewer2_id, :reviewer3_id, :content, :user_id, :terabox_url
+  permit_params :title, :keywords, :approval_status, :reviewer1_id, :reviewer2_id, :reviewer3_id, :content, :user_id, :reference_url
   #
   # or
   #
@@ -20,7 +20,7 @@ ActiveAdmin.register Article do
         f.input :title
         f.input :keywords
         f.rich_text_area :content
-        f.input :terabox_url
+        f.input :reference_url
         f.input :user
       end
       f.actions
@@ -40,7 +40,7 @@ ActiveAdmin.register Article do
         row :title
         row :keywords
         row :approval_status
-        row :terabox_url
+        row :reference_url
         row :content do
           div resource.content
         end

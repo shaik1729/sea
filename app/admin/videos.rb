@@ -5,7 +5,7 @@ ActiveAdmin.register Video do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :tutorial_id, :content, :user_id, :terabox_video_url
+  permit_params :title, :tutorial_id, :content, :user_id, :video_url
   #
   # or
   #
