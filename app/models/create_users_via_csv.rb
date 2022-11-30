@@ -7,16 +7,16 @@ class CreateUsersViaCsv
         csv_file = csv_data.read
         CSV.parse(csv_file, headers: true) do |row|
           fields = row.to_hash
-
+          byebug
           email = fields["Email Address"]
           name = fields["Name"].upcase!
           mobile = fields["Mobile Number"]
-          department_id = Department.find_by(code: fields["Department"].upcase!).id
+          department_id = Department.find_by(code: fields["Department"]).id
           if fields["Regulation"]
-            regulation_id = Regulation.find_by(code: fields["Regulation"].upcase!).id
+            regulation_id = Regulation.find_by(code: fields["Regulation"]).id
             rollno = fields["Roll Number"].upcase!
             batch_id = Batch.find_by(name: fields["Batch"]).id
-            course_id = Course.find_by(code: fields["Course"].upcase!).id
+            course_id = Course.find_by(code: fields["Course"]).id
             role_id = Role.find_by(code: "STU").id
           else
             regulation_id = nil
