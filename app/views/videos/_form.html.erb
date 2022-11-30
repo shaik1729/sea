@@ -23,16 +23,11 @@
     <%= form.rich_text_area :content, class: "form-control" %>
   </div>
 
-  <div class="field mt-2">
-    <%= form.label :clip, class: "form-label" %>
-    <%= form.file_field :clip, class: "form-control", required: "required" %>
+  <div class="field">
+    <%= form.label :video_url, class: "form-label" %>
+    <%= form.text_field :video_url, class: "form-control" %>
   </div>
 
-
-  <div class="field mt-2">
-    <%= form.label :thumbnail, class: "form-label" %>
-    <%= form.file_field :thumbnail, class: "form-control", required: "required" %>
-  </div>
 
   <div class="field mt-2">
     <%= form.label :tutorial_id, class: "form-label" %>
@@ -43,6 +38,8 @@
     <%= form.label :user_id %>
     <%= form.number_field :user_id, :value => current_user.id %>
   </div>
+
+
 
   <div class="actions">
     <%= form.submit class: "btn btn-success mt-4" %>

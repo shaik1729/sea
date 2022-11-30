@@ -37,7 +37,6 @@
 
       <div class="col m-4">
         <div class="card" style="width: 20rem;">
-          <%= image_tag(url_for(tutorial.thumbnail), class: "card-img-top" ) %>
           <div class="card-body">  
             <p class="fw-bold m-0"><%= tutorial.title %></p>
             <small class="text-uppercase"><%= "#{tutorial.user.name} (#{tutorial.user.department.code})" %></small>

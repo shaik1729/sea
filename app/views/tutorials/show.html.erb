@@ -12,26 +12,8 @@
 <button class="collapsible"><%= "#{index+1} ) #{video.title}" %></button>
 <div class="content">
   <div class="row">
-    <div class="col-12">
-      <div class="row">
-        <video
-          id="my-video"
-          class="video-js vjs-default-skin vjs-16-9"
-          controls
-          preload="auto"
-          poster="<%= url_for(video.thumbnail) %>"
-          data-setup="{}" >
-          <source src="<%= url_for(video.clip) %>"
-          type="video/mp4" />
-          <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider upgrading
-            to a web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank"
-              >supports HTML5 video</a
-            >
-          </p>
-        </video>
-      </div>
+   
+    <div class="col-6">
       <div class="row mt-2">
         <div class="card">
           <div class="card-header fw-bold">Description</div>
@@ -39,6 +21,13 @@
         </div>
       </div>
     </div>
+
+    <div class="col-6">
+      <div class="row mt-2">
+        <iframe width="560" height="315" src=<%= "https://www.youtube.com/embed/#{video.video_url.split("=")[1]}" %> title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
   </div>
 </div>
 <% end %>

@@ -5,7 +5,7 @@ ActiveAdmin.register Video do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :tutorial_id, :content, :clip, :thumbnail, :user_id
+  permit_params :title, :tutorial_id, :content, :user_id, :video_url
   #
   # or
   #
@@ -19,8 +19,6 @@ ActiveAdmin.register Video do
       f.inputs "Video" do
         f.input :title 
         f.rich_text_area :content
-        f.input :clip, as: :file
-        f.input :thumbnail, as: :file
         f.input :tutorial
         f.input :user
       end
