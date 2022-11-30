@@ -7,7 +7,7 @@ class CreateUsersViaCsv
         csv_file = csv_data.read
         CSV.parse(csv_file, headers: true) do |row|
           fields = row.to_hash
-          byebug
+
           email = fields["Email Address"]
           name = fields["Name"].upcase!
           mobile = fields["Mobile Number"]
