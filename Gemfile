@@ -60,3 +60,6 @@ gem "activeadmin", "~> 2.13"
 gem "devise", "~> 4.8"
 gem "image_processing", "~> 1.12"
 gem "letter_opener"
+
+gem 'yaml_db'
+gem "pg", "~> 1.4"

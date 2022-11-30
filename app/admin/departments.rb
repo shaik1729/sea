@@ -5,7 +5,7 @@ ActiveAdmin.register Department do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :code
+  permit_params :name, :code, :vision, :mission, :logo
   #
   # or
   #
@@ -14,5 +14,17 @@ ActiveAdmin.register Department do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+
+    form do |f|
+      f.inputs "Department" do
+        f.input :name 
+        f.input :code
+        f.input :vision
+        f.input :mission
+        f.input :logo, as: :file
+      end
+      f.actions
+    end
   
 end

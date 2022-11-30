@@ -11,16 +11,20 @@ class CreateUsersViaCsv
           email = fields["Email Address"]
           name = fields["Name"].upcase!
           mobile = fields["Mobile Number"]
-          rollno = fields["Roll Number"].upcase!
           department_id = Department.find_by(code: fields["Department"].upcase!).id
-          course_id = Course.find_by(code: fields["Course"].upcase!).id
           if fields["Regulation"]
             regulation_id = Regulation.find_by(code: fields["Regulation"].upcase!).id
+            rollno = fields["Roll Number"].upcase!
+            batch_id = Batch.find_by(name: fields["Batch"]).id
+            course_id = Course.find_by(code: fields["Course"].upcase!).id
             role_id = Role.find_by(code: "STU").id
           else
+            regulation_id = nil
+            rollno = nil
+            batch_id = nil
+            course_id = nil
             role_id = Role.find_by(code: "FAC").id
           end
-          batch_id = Batch.find_by(name: fields["Batch"]).id
           avatar_url = fields["pass port photo"].split("=").last
           password = (0...8).map { (65 + rand(26)).chr }.join
 

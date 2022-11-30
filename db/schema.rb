@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_08_104956) do
+ActiveRecord::Schema.define(version: 2022_11_30_130346) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
     t.string "record_type", null: false
-    t.integer "record_id", null: false
+    t.bigint "record_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
@@ -26,9 +29,9 @@ ActiveRecord::Schema.define(version: 2022_10_08_104956) do
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
@@ -100,6 +103,7 @@ ActiveRecord::Schema.define(version: 2022_10_08_104956) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "reference_url"
   end
 
   create_table "batches", force: :cascade do |t|
@@ -131,6 +135,8 @@ ActiveRecord::Schema.define(version: 2022_10_08_104956) do
     t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "vision"
+    t.text "mission"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -143,11 +149,19 @@ ActiveRecord::Schema.define(version: 2022_10_08_104956) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "reference_url"
   end
 
   create_table "magazines", force: :cascade do |t|
     t.string "title"
     t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "name"
+    t.string "designation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -195,6 +209,13 @@ ActiveRecord::Schema.define(version: 2022_10_08_104956) do
 
   create_table "semesters", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sliders", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -247,6 +268,7 @@ ActiveRecord::Schema.define(version: 2022_10_08_104956) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "video_url"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

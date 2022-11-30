@@ -1,0 +1,53 @@
+<div class="container shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="row text-center bg-info p-4 fw-bold rounded-pill">
+        <p>Department Of <%= @department.name %></p>
+    </div>
+    <div class="row mt-4 text-center d-flex justify-content-around">
+        <div class="col-lg-5 shadow-lg p-3 mb-5 bg-body">
+            <h5 class="bg-danger text-light p-2">Vision</h5>
+            <p><%= @department.vision %></p>
+        </div>
+        <div class="col-lg-5 shadow-lg p-3 mb-5 bg-body">
+            <h5 class="bg-danger text-light p-2">Mission</h5>
+            <p><%= @department.mission %></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row shadow-lg p-3 mb-5 bg-body">
+            <div class="col">
+                <h5 class="bg-danger text-light p-2 text-center">Head Of The Department</h5>
+                <div class="row mt-4 d-flex justify-content-around">
+                    <div class="card" style="width: 18rem; margin-top: 10px;">
+                        <iframe src="https://drive.google.com/file/d/<%= @hod.avatar_url %>/preview" allow="autoplay" class="card-img-top"></iframe>
+                        <div class="card-body">
+                            <h5 class="card-title">Name : <%= @hod.name %></h5>
+                            <p class="card-text">Email : <%= @hod.email %></p>
+                            <p class="card-text">Mobile : <%= @hod.mobile %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5 class="bg-danger text-light p-2 text-center">Our Faculty</h5>
+            </div>
+        </div>
+        <div class="row mt-4 d-flex justify-content-around shadow-lg p-3 mb-5 bg-body">
+            <% @faculties.each do |faculty| %>
+                <div class="col-4">
+                    <div class="card" style="width: 18rem; margin-top: 10px;">
+                        <iframe src="https://drive.google.com/file/d/<%= faculty.avatar_url %>/preview" allow="autoplay" class="card-img-top w-100 h-100"></iframe>
+                        <div class="card-body">
+                            <h5 class="card-title">Name : <%= faculty.name %></h5>
+                            <p class="card-text">Email : <%= faculty.email %></p>
+                            <p class="card-text">Mobile : <%= faculty.mobile %></p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

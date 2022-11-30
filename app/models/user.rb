@@ -11,6 +11,8 @@ class User < ApplicationRecord
   belongs_to :regulation, optional: true
   belongs_to :batch, optional: true
 
+  before_save :upcase_fields
+
   has_many :documents
   has_many :articles
   has_many :notifications
@@ -31,5 +33,10 @@ class User < ApplicationRecord
 
   def is_faculty?
     role.code == 'FAC'
+  end
+
+  def upcase_fields
+      self.name.upcase!
+      self.rollno&.upcase!
   end
 end
