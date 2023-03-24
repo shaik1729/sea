@@ -7,7 +7,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="<%= url_for(@sliders[0].image) %>" class="bd-placeholder-img w-100 h-100" alt="...">
+        <%= image_tag(@sliders[0].image, class: "bd-placeholder-img w-100 h-100") %>
         <div class="container">
           <div class="carousel-caption text-start transparency p-4">
             <h1><%= @sliders[0].title %></h1>
