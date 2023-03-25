@@ -81,7 +81,7 @@
     <div class="row mb-2">
       <div class="col comment_avatar_view">
         <iframe src="https://drive.google.com/file/d/<%= current_user.avatar_url %>/preview" class="avatar"></iframe>
-        <p class="m-2"><%= current_user.name.upcase! %></p>
+        <p class="m-2"><%= current_user.name.upcase %></p>
       </div>
     </div>
     <%= form_for [@document, Comment.new], method: :post do |f| %>

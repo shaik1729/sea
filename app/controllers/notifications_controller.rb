@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
 
   # GET /notifications or /notifications.json
   def index
-    @notifications = Notification.where(user_id: nil).order("id DESC")
+    @notifications = Notification.all.order("id DESC")
     if !current_user.is_student?
       @your_notifications = current_user.notifications.all.order("id DESC")
     end

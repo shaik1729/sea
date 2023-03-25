@@ -12,7 +12,7 @@ class ResultsController < ApplicationController
         if @results.empty?
           redirect_to results_path, notice: "Roll number doesn't have any resutls yet"
         else
-          @total_credits = Result.where(user_id: @user.id).sum(:credits)
+          @total_credits = Result.where(user_id: @user.id).map(&:credits).map{|num| num.to_i}.sum()
         end
       else
         redirect_to results_path, notice: "Roll number doesn't exist"

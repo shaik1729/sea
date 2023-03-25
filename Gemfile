@@ -62,3 +62,4 @@ gem "image_processing", "~> 1.12"
 gem "letter_opener"
 
 gem 'yaml_db'
+gem 'pg'
